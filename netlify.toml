@@ -1,0 +1,70 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ---------------------------------------------------------------------------
+# Cache
+#
+# A regra que decide tudo aqui: nenhum arquivo deste site tem impressao digital
+# no nome. O CSS e sempre "site.css", a foto e sempre "quem-sou-eu.jpg". Quando
+# o conteudo muda, o nome nao muda. Cache longo so e seguro quando o nome muda
+# junto com o conteudo, e nao e o caso.
+#
+# A versao anterior deste arquivo errava nisso duas vezes, e o resultado
+# apareceu: depois de uma publicacao, quem ja tinha visitado o site continuava
+# vendo o CSS antigo. Os icones do rodape sumiam, porque as regras deles nao
+# existiam no CSS velho, e a arte circular de "Quem sou eu" ganhava um quadrado
+# branco em volta, porque no CSS velho o raio ainda era 14px em vez de 50%.
+# Em janela anonima, sem cache, tudo aparecia certo. O site estava certo, o
+# navegador e que estava servindo peca velha.
+# ---------------------------------------------------------------------------
+
+# HTML: nunca guardar. E o arquivo que aponta para todos os outros.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CSS e JS: revalidar sempre. Com ETag isso custa um 304 de alguns bytes, e em
+# troca uma publicacao chega na hora para todo mundo. Sao 36 KB e 12 KB: o
+# ganho de guardar por uma semana nao paga o risco de servir tela quebrada.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Imagens: uma hora, e depois revalida. NAO pode ser immutable. Imagem aqui e
+# trocada mantendo o mesmo nome, que e justamente o fluxo descrito no arquivo
+# de prompts: gere, salve com o mesmo nome, substitua. Com "immutable" o
+# navegador nem pergunta se mudou, e a troca so apareceria no ano seguinte.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+# Fontes: essas sim podem ser eternas. O arquivo de uma fonte nunca e
+# substituido por outro conteudo com o mesmo nome; trocar de fonte significa
+# trocar de arquivo.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Documentacao interna nao precisa ser servida ao publico.
+[[redirects]]
+  from = "/README.md"
+  to = "/"
+  status = 301
+  force = true

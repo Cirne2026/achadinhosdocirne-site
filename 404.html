@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página não encontrada · Achadinhos do Cirne</title>
+<meta name="description" content="Esta página não existe mais, mas a loja e as ofertas continuam aqui.">
+<meta name="theme-color" content="#061512" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBF3E2" media="(prefers-color-scheme: light)">
+<!-- Pagina de erro nao deve ser indexada nem aparecer em busca. -->
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/cabinet-grotesk-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
+
+<!-- Caminhos absolutos, com barra na frente, em tudo aqui.
+     O 404 e servido no endereco que a pessoa errou, que pode ter qualquer
+     profundidade: /dicas/tv/qualquer-coisa. Com caminho relativo o CSS
+     procuraria em /dicas/tv/assets/ e a pagina de erro apareceria sem
+     estilo nenhum - um erro dentro do erro.
+
+     Tambem NAO carrega GSAP nem site.js: sao 130 KB para animar uma pagina
+     que a pessoa quer sair o mais rapido possivel. -->
+
+<style>
+  .erro {
+    min-height: 100dvh;
+    display: grid;
+    align-content: center;
+    gap: clamp(18px, 3vh, 30px);
+    max-width: var(--largura);
+    margin-inline: auto;
+    padding: clamp(80px, 12vh, 120px) var(--gutter) clamp(40px, 8vh, 80px);
+  }
+  .erro__codigo {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(3.4rem, 14vw, 8rem);
+    line-height: 0.82;
+    letter-spacing: -0.05em;
+    /* --accent-ink, nao --accent. O primeiro e o dourado de TEXTO, que o
+       tema claro escurece para #8A6314; o segundo e o de preenchimento, e
+       fica em #E9B540 nos dois temas. Usando --accent, o 404 saia com
+       contraste 1.71 sobre o creme - praticamente invisivel. */
+    color: var(--accent-ink);
+    margin: 0;
+  }
+  .erro__titulo {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: var(--t-2xl);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0;
+    max-width: 18ch;
+  }
+  .erro__texto {
+    color: var(--ink-2);
+    font-size: var(--t-lg);
+    max-width: var(--medida);
+    margin: 0;
+  }
+  .erro__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(12px, 1.6vw, 18px);
+    margin-top: clamp(6px, 1vh, 14px);
+  }
+  /* 48px de altura minima: esta pagina e mais provavel de ser aberta no
+     celular, por link velho compartilhado, e botao pequeno em dedo grande e
+     como nao ter botao. */
+  .erro__acoes .acao,
+  .erro__acoes .acao-fio { min-height: 48px; }
+
+  .erro__volta {
+    color: var(--ink-3);
+    font-size: var(--t-sm);
+    margin: clamp(10px, 2vh, 20px) 0 0;
+  }
+  .erro__volta a { color: var(--ink-2); }
+  .erro__volta a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-seta" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+</svg>
+
+<main class="erro">
+  <p class="erro__codigo">404</p>
+
+  <h1 class="erro__titulo">Essa página não existe mais</h1>
+
+  <p class="erro__texto">
+    Pode ser um link antigo, ou um endereço digitado com algum caractere a
+    mais. Acontece. O que você procura provavelmente está num dos dois
+    lugares abaixo.
+  </p>
+
+  <div class="erro__acoes">
+    <a class="acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+      Ver ofertas de hoje
+      <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+    </a>
+    <a class="acao-fio" href="/ofertas/">Tudo que eu já divulguei</a>
+  </div>
+
+  <p class="erro__volta">
+    Ou volte para a <a href="/">página inicial</a>.
+  </p>
+</main>
+
+</body>
+</html>

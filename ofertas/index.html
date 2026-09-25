@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ofertas · Achadinhos do Cirne</title>
+<meta name="description" content="Tudo que eu já divulguei, com o link direto da loja. Pagamento, entrega e suporte do Magalu.">
+<meta name="theme-color" content="#061512" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBF3E2" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://achadinhosdocirne.netlify.app/ofertas/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Achadinhos do Cirne">
+<meta property="og:title" content="Ofertas · Achadinhos do Cirne">
+<meta property="og:description" content="Tudo que eu já divulguei, com o link direto da loja.">
+<meta property="og:url" content="https://achadinhosdocirne.netlify.app/ofertas/">
+<meta property="og:image" content="https://achadinhosdocirne.netlify.app/assets/img/og.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/cabinet-grotesk-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=3">
+
+<!-- O tema escolhido vale nas DUAS páginas: o site guarda a escolha em
+     localStorage (chave adc-tema), que é por domínio, e o site.js a reaplica.
+     Este script inline roda ANTES do corpo aparecer para não haver piscada de
+     tema errado — o site.js ainda faria o trabalho, mas só depois de carregar,
+     e a página já teria aparecido clara por um instante. -->
+<script>
+  document.documentElement.classList.add("js");
+  try {
+    var t = window.localStorage.getItem("adc-tema");
+    if (t) { document.documentElement.setAttribute("data-tema", t); }
+  } catch (e) { /* janela privada, dados bloqueados: fica o tema do sistema */ }
+</script>
+
+<style>
+  /* Esta pagina e GERADA por automacao\gerar-ofertas.ps1. Editar a mao aqui
+     nao adianta: a proxima geracao sobrescreve. Mexa no gerador.
+
+     O CSS vive aqui dentro, e nao em ofertas.css, de proposito: a pagina e
+     reescrita inteira a cada geracao, entao estilo e marcacao nunca saem de
+     sincronia nem dependem de cache de um segundo arquivo. */
+
+  /* A barra do topo é FIXA e vem do site.css. O respiro de cima já era
+     grande o bastante para ela não cobrir o título, mas agora que a barra
+     existe de verdade aqui, o valor deixa de ser estético e passa a ser
+     funcional: menos que isso e o "Tudo que eu já divulguei" entra embaixo
+     dela. */
+  .ofertas-topo {
+    padding-block: clamp(96px, 14vh, 156px) clamp(28px, 5vh, 52px);
+  }
+  .ofertas-topo h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: var(--t-3xl); line-height: 0.96; letter-spacing: -0.035em;
+    margin: 0 0 clamp(14px, 2vh, 22px);
+  }
+  .ofertas-topo p {
+    color: var(--ink-2); font-size: var(--t-lg);
+    max-width: var(--medida); margin: 0;
+  }
+  .ofertas-topo .voltar {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--ink-3); font-size: var(--t-sm); text-decoration: none;
+    margin-bottom: clamp(18px, 3vh, 30px);
+  }
+  .ofertas-topo .voltar:hover { color: var(--accent); }
+
+  /* CARROSSEL
+     A rolagem é NATIVA: display:flex + overflow-x + scroll-snap. Arrastar no
+     celular e o trackpad funcionam sem uma linha de JavaScript, e as setas são
+     só um atalho a mais - elas nascem escondidas e o script as mostra, para
+     nunca aparecer botão morto numa página sem script.
+
+     Motivo de ser carrossel e não grade: ele posta três vezes por dia, então
+     em um mês a grade viraria uma parede de rolagem vertical. */
+  .carrossel { padding-bottom: var(--bloco); }
+
+  .carrossel__cabeca {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; margin-bottom: clamp(14px, 2vh, 22px);
+  }
+  .carrossel__conta { margin: 0; color: var(--ink-3); font-size: var(--t-sm); }
+
+  .carrossel__setas { display: none; gap: 8px; flex: none; }
+  .carrossel__setas[data-pronto] { display: flex; }
+  .seta {
+    width: 42px; height: 42px; flex: none;
+    display: grid; place-items: center;
+    border: 1px solid var(--line-strong); border-radius: 50%;
+    background: var(--surface); color: var(--ink);
+    cursor: pointer; transition: background 0.2s var(--curva), opacity 0.2s;
+  }
+  .seta:hover:not(:disabled) { background: var(--surface-2); }
+  .seta:disabled { opacity: 0.32; cursor: default; }
+  .seta svg { width: 18px; height: 18px; }
+
+  .carrossel__trilho {
+    list-style: none; margin: 0; padding: 4px 0 14px;
+    display: flex; gap: clamp(16px, 2.2vw, 30px);
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    /* o cartão sai do fluxo da grade, então o tamanho vem daqui */
+  }
+  .carrossel__trilho > .oferta {
+    flex: 0 0 clamp(228px, 74vw, 272px);
+    scroll-snap-align: start;
+    /* min-width: 0 e obrigatorio. Item de flex nasce com min-width:auto, que
+       resolve para o tamanho do CONTEUDO - e uma foto em pe entao ESTICA o
+       cartao. Medido em 25/09 na cadeira gamer: foto 400x600 fez a caixa virar
+       395x583 em vez de 270x270, o cartao cresceu, e o botao "Ver preco na
+       loja" foi parar 161px ABAIXO do fim do cartao. Some da tela, e some
+       junto o unico caminho para a loja. Ele viu na pagina; eu tinha olhado o
+       HTML, achado o botao la, e dito que estava tudo certo. */
+    min-width: 0;
+  }
+  /* a barra de rolagem fica discreta, mas VISÍVEL: ela é a dica de que dá
+     para arrastar, e sumir com ela esconde a própria affordance */
+  .carrossel__trilho { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+  .carrossel__trilho::-webkit-scrollbar { height: 8px; }
+  .carrossel__trilho::-webkit-scrollbar-thumb {
+    background: var(--line-strong); border-radius: 99px;
+  }
+  .carrossel__trilho::-webkit-scrollbar-track { background: transparent; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carrossel__trilho { scroll-behavior: auto; }
+  }
+
+  .oferta {
+    display: grid; grid-template-rows: auto 1fr;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--r-surface); overflow: hidden;
+    box-shadow: var(--e1);
+    transition: transform 0.3s var(--curva), box-shadow 0.3s var(--curva);
+  }
+  .oferta:hover { transform: translateY(-3px); box-shadow: var(--e2); }
+
+  .oferta__foto {
+    aspect-ratio: 1; background: #fff;
+    display: grid; place-items: center; padding: 10px;
+  }
+  /* contain, nunca cover: as fotos da loja vem em proporcoes muito diferentes
+     (ja medimos de 1:1 a 5:1). Cortar para caber num quadrado esconde o
+     formato real e as vezes corta o proprio produto. */
+  .oferta__foto img {
+    /* max-* alem de width/height: com foto em pe, o height:100% sozinho
+       resolvia contra uma caixa cuja altura vinha da propria imagem. */
+    width: 100%; height: 100%; max-width: 100%; max-height: 100%;
+    object-fit: contain; display: block;
+  }
+
+  .oferta__corpo {
+    display: grid; align-content: start; gap: 8px;
+    padding: clamp(14px, 1.6vw, 20px);
+  }
+  .oferta__nome {
+    font-family: var(--body); font-weight: 700;
+    font-size: var(--t-base); line-height: 1.32; margin: 0;
+    color: var(--ink);
+  }
+  .oferta__nota {
+    display: flex; align-items: center; gap: 6px;
+    margin: 0; font-size: var(--t-sm); color: var(--accent-ink); font-weight: 700;
+  }
+  .oferta__nota span { color: var(--ink-3); font-weight: 400; font-size: var(--t-xs); }
+  .oferta__nota .icone { width: 15px; height: 15px; }
+  .oferta__data { margin: 0; font-size: var(--t-xs); color: var(--ink-3); }
+
+  .oferta__botao {
+    justify-self: start; margin-top: 6px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: var(--r-pill);
+    background: var(--accent); color: var(--on-accent);
+    font-weight: 700; font-size: var(--t-sm); text-decoration: none;
+    transition: filter 0.22s var(--curva);
+  }
+  .oferta__botao:hover { filter: brightness(1.08); }
+  .oferta__botao .icone { width: 15px; height: 15px; }
+
+  .oferta--vazia { flex: 1 1 100%; padding: 40px; color: var(--ink-2); }
+  .oferta--vazia p { margin: 0; }
+
+  .ofertas-aviso {
+    color: var(--ink-3); font-size: var(--t-sm);
+    max-width: var(--medida); margin: 0 0 clamp(26px, 4vh, 44px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oferta, .oferta__botao { transition: none; }
+    .oferta:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-seta" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+<symbol id="i-estrela" viewBox="0 0 256 256" fill="currentColor"><path d="M239.2,97.29a16,16,0,0,0-13.81-11L166,81.17,142.72,25.81h0a15.95,15.95,0,0,0-29.44,0L90.07,81.17,30.61,86.32a16,16,0,0,0-9.11,28.06L66.61,153.8,53.09,212.34a16,16,0,0,0,23.84,17.34l51-31,51.11,31a16,16,0,0,0,23.84-17.34l-13.51-58.6,45.1-39.36A16,16,0,0,0,239.2,97.29Z"/></symbol>
+<symbol id="i-ant" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+<symbol id="i-prox" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></symbol>
+</svg>
+
+<!-- Os ícones do rodapé e do cabeçalho, extraídos do index.html na geração. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol>
+<symbol id="i-lifebuoy" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.1,131.79a47.84,47.84,0,0,0,0-55.58l28.5-28.49a87.83,87.83,0,0,1,0,112.56ZM96,128a32,32,0,1,1,32,32A32,32,0,0,1,96,128Zm88.28-67.6L155.79,88.9a47.84,47.84,0,0,0-55.58,0L71.72,60.4a87.83,87.83,0,0,1,112.56,0ZM60.4,71.72l28.5,28.49a47.84,47.84,0,0,0,0,55.58L60.4,184.28a87.83,87.83,0,0,1,0-112.56ZM71.72,195.6l28.49-28.5a47.84,47.84,0,0,0,55.58,0l28.49,28.5a87.83,87.83,0,0,1-112.56,0Z"/></symbol>
+<symbol id="i-magnifying-glass" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-moon-stars" viewBox="0 0 256 256" fill="currentColor"><path d="M240,96a8,8,0,0,1-8,8H216v16a8,8,0,0,1-16,0V104H184a8,8,0,0,1,0-16h16V72a8,8,0,0,1,16,0V88h16A8,8,0,0,1,240,96ZM144,56h8v8a8,8,0,0,0,16,0V56h8a8,8,0,0,0,0-16h-8V32a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16Zm72.77,97a8,8,0,0,1,1.43,8A96,96,0,1,1,95.07,37.8a8,8,0,0,1,10.6,9.06A88.07,88.07,0,0,0,209.14,150.33,8,8,0,0,1,216.77,153Zm-19.39,14.88c-1.79.09-3.59.14-5.38.14A104.11,104.11,0,0,1,88,64c0-1.79,0-3.59.14-5.38A80,80,0,1,0,197.38,167.86Z"/></symbol>
+<symbol id="i-play-circle" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48.24-94.78-64-40A8,8,0,0,0,100,88v80a8,8,0,0,0,12.24,6.78l64-40a8,8,0,0,0,0-13.56ZM116,153.57V102.43L156.91,128Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-tiktok" viewBox="0 0 256 256" fill="currentColor"><path d="M224,72a48.05,48.05,0,0,1-48-48,8,8,0,0,0-8-8H128a8,8,0,0,0-8,8V156a20,20,0,1,1-28.57-18.08A8,8,0,0,0,96,130.69V88a8,8,0,0,0-9.4-7.88C50.91,86.48,24,119.1,24,156a76,76,0,0,0,152,0V116.29A103.25,103.25,0,0,0,224,128a8,8,0,0,0,8-8V80A8,8,0,0,0,224,72Zm-8,39.64a87.19,87.19,0,0,1-43.33-16.15A8,8,0,0,0,160,102v54a60,60,0,0,1-120,0c0-25.9,16.64-49.13,40-57.6v27.67A36,36,0,1,0,136,156V32h24.5A64.14,64.14,0,0,0,216,87.5Z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 256 256" fill="currentColor"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+<symbol id="i-youtube" viewBox="0 0 256 256" fill="currentColor"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav__interno">
+    <a class="marca" href="../" aria-label="Achadinhos do Cirne, ir para o inicio">
+      <img class="marca__selo" src="../favicon.svg" alt="" width="30" height="30">
+      <span class="marca__nome">Achadinhos do Cirne</span>
+    </a>
+
+    <!-- Este e o MESMO nav no computador e no celular. No celular o CSS o
+         transforma em painel; nao existe um segundo menu escondido. Menu
+         duplicado e menu que um dia fica dessincronizado. -->
+    <nav class="nav__links" id="menu" aria-label="Navegacao do site">
+      <a class="nav__link" href="../#loja">Loja</a>
+      <a class="nav__link" href="../#quem-sou-eu">Quem sou eu</a>
+      <a class="nav__link" href="../#dicas">Dicas</a>
+      <a class="nav__link" href="../#canais">Canais</a>
+      <!-- Unico link daqui que sai da pagina. E a pagina que o link da bio do
+           Instagram aponta: la o link vai na bio, e uma bio tem um link so. -->
+      <a class="nav__link" href="/ofertas/">Ofertas</a>
+
+      <!-- So aparece no celular. Na barra estreita nao cabe logo + tema +
+           botao de menu + este CTA: medido, daria 383px numa tela de 375. Em
+           vez de espremer tudo, o CTA desce para dentro do painel, que e onde
+           ele tem espaco para ser grande de verdade. O irmao dele na barra
+           some no mesmo ponto, entao nunca ha dois visiveis ao mesmo tempo. -->
+      <a class="acao menu__acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+        Ver ofertas de hoje
+        <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+      </a>
+    </nav>
+
+    <button class="tema" id="tema" type="button" aria-label="Alternar entre tema claro e escuro">
+      <svg class="icone" id="tema-icone" aria-hidden="true" style="width:17px;height:17px"><use href="#i-sun"></use></svg>
+    </button>
+
+    <a class="acao acao--miuda nav__acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+      Ver ofertas de hoje
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+    </a>
+
+    <!-- Ultimo da barra: no celular fica na ponta direita, onde o polegar
+         alcanca. Some no computador, onde o menu ja esta todo a vista. -->
+    <button class="menu-botao" id="menu-botao" type="button"
+            aria-label="Abrir o menu" aria-expanded="false" aria-controls="menu">
+      <span class="menu-botao__barras" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main class="envelope">
+
+  <header class="ofertas-topo">
+    <a class="voltar" href="../">&larr; Achadinhos do Cirne</a>
+    <h1>Tudo que eu já divulguei</h1>
+    <p>Cada produto abre direto na minha loja no Magalu. Pagamento, entrega e suporte são de lá.</p>
+  </header>
+
+  <p class="ofertas-aviso">
+    Não coloco preço aqui de propósito: preço muda de um dia para o outro, e
+    número velho na tela vira promessa que eu não posso cumprir. O preço certo
+    é sempre o que está no link, na hora em que você clicar.
+  </p>
+
+  <section class="carrossel" aria-labelledby="tit-carrossel">
+    <div class="carrossel__cabeca">
+      <p class="carrossel__conta" id="tit-carrossel">10 produtos &middot; do mais novo para o mais antigo</p>
+      <!-- validade: 60 dias; 0 fora por idade -->
+      <div class="carrossel__setas" id="setas">
+        <button class="seta" type="button" id="ant" aria-label="Ver as ofertas anteriores" aria-controls="trilho">
+          <svg aria-hidden="true"><use href="#i-ant"></use></svg>
+        </button>
+        <button class="seta" type="button" id="prox" aria-label="Ver as próximas ofertas" aria-controls="trilho">
+          <svg aria-hidden="true"><use href="#i-prox"></use></svg>
+        </button>
+      </div>
+    </div>
+
+    <ul class="carrossel__trilho" id="trilho" tabindex="0" aria-label="Produtos que eu já divulguei">
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/cadeira-gamer-ergonomica-python-fly-com-apoio-para-pes-ajustavel-pu-reclinavel-com-almofadas-135-ate-150-kg/mopowerstore/cpfgc13l2509y/2a3c9c704cc6d9448f13bc5fff677f2f.jpeg" alt="Cadeira Gamer com apoio para os pés Reclinável Profissional p Escritório e Jogos" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Cadeira Gamer com apoio para os pés Reclinável Profissional p Escritório e Jogos</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.5 <span>&middot; 6 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 24/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/cadeira-gamer-ergonomica-python-fly-com-apoio-para-pes-ajustavel-pu-reclinavel-com-almofadas-135-ate-150-kg/p/bec2803ec7/mo/mecg/?seller_id=mopowerstore" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/furadeira-e-parafusadeira-wap-a-bateria-12v-com-maleta-13-pecas-bpf-12k3/magazineluiza/236188200/84c47b302e03f863a89fcf9d0d603dc2.jpg" alt="Furadeira e Parafusadeira Wap a Bateria 12V com Maleta 13 Peças BPF 12K3" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Furadeira e Parafusadeira Wap a Bateria 12V com Maleta 13 Peças BPF 12K3</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.8 <span>&middot; 7484 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 24/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/furadeira-e-parafusadeira-wap-a-bateria-12v-com-maleta-13-pecas-bpf-12k3/p/236188200/fs/fura/?seller_id=magazineluiza" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/celular-samsung-galaxy-a17-256gb-8gb-ram-preto-67-cam-tripla-selfie-13mp/magazineluiza/240575400/9c8eff3e3a94ccd2a61e37ebfaedbada.jpg" alt="Celular Samsung Galaxy A17 256GB 8GB RAM Preto 6,7&quot; Câm. Tripla + Selfie 13MP" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Celular Samsung Galaxy A17 256GB 8GB RAM Preto 6,7&quot; Câm. Tripla + Selfie 13MP</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.9 <span>&middot; 13766 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 23/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/celular-samsung-galaxy-a17-256gb-8gb-ram-preto-67-cam-tripla-selfie-13mp/p/240575400/te/ga17/?seller_id=magazineluiza" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/aspirador-de-po-e-agua-electrolux-compacto-potente-funcao-sopro-1400w-12l-total-5l-util-protetor-termico-awd01/lojaondax/mlb6339793/f27c9375e46fac387d02ea2bb88adfe4.jpeg" alt="Aspirador de Pó e Água Electrolux Compacto Potente Função Sopro 1400W 12L total 5L útil protetor térmico AWD01" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Aspirador de Pó e Água Electrolux Compacto Potente Função Sopro 1400W 12L total 5L útil protetor térmico AWD01</h2>
+          
+          <p class="oferta__data">Divulgado em 22/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/aspirador-de-po-e-agua-electrolux-compacto-potente-funcao-sopro-1400w-12l-total-5l-util-protetor-termico-awd01/p/dj1c1jbe24/ep/elau/?seller_id=lojaondax" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/chaleira-eletrica-portatil-inox-jarra-bule-eletrico-2-litros-maxxi-house/cnmshop2/p12159/8aa9c83b00572081ff47c3224e855475.jpeg" alt="Chaleira Elétrica Portátil Inox Jarra Bule Elétrico 2 Litros" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Chaleira Elétrica Portátil Inox Jarra Bule Elétrico 2 Litros</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.65 <span>&middot; 620 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 22/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/chaleira-eletrica-portatil-inox-jarra-bule-eletrico-2-litros-maxxi-house/p/ed60gj338c/ep/clre/?seller_id=cnmshop2" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/extratora-wap-portatil-spot-cleaner-w3-1450w/magazineluiza/238879800/b8a13485637c0d61e8ca2fa2f3a31bd7.jpg" alt="Extratora Wap Portátil Spot Cleaner W3 1450W" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Extratora Wap Portátil Spot Cleaner W3 1450W</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.89 <span>&middot; 369 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 21/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/extratora-wap-portatil-spot-cleaner-w3-1450w/p/238879800/fj/lett/?seller_id=magazineluiza" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/maquina-de-lavar-electrolux-15kg-branca-essential-care-com-cesto-inox-e-jet-clean-led15/electrolux/310118596/c48223c565b734aa2e6b2a42bd7b2dde.jpeg" alt="Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.81 <span>&middot; 10295 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 21/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/maquina-de-lavar-electrolux-15kg-branca-essential-care-com-cesto-inox-e-jet-clean-led15/p/ejf77g3k6c/ed/lava/?seller_id=electrolux" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/liquidificador-oster-1400-full-preto-127v-1400w-oliq610-127/continentalcenter/321250470104100111/2dff58dcc1ef19c3abe3a9c866f4b3da.jpg" alt="Liquidificador Oster 1400 Full Preto 127V 1400W OLIQ610-127" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Liquidificador Oster 1400 Full Preto 127V 1400W OLIQ610-127</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.68 <span>&middot; 12580 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 21/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/liquidificador-oster-1400-full-preto-127v-1400w-oliq610-127/p/jafbgdbged/ep/liqu/?seller_id=continentalcenter" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/fogao-de-mesa-eletrico-elgin-double-cook-2-bocas-2000w-127v/bumpermagazine/42fog-127v-mgl-full/c13929dab774cecf5f785819ca22af48.jpeg" alt="Fogão De Mesa Elétrico Elgin Double Cook 2 Bocas 2000w 127V" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Fogão De Mesa Elétrico Elgin Double Cook 2 Bocas 2000w 127V</h2>
+          <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4.54 <span>&middot; 180 avaliações na loja</span></p>
+          <p class="oferta__data">Divulgado em 20/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/fogao-de-mesa-eletrico-elgin-double-cook-2-bocas-2000w-127v/p/kg4k1f28h4/es/eiro/" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+      <li class="oferta">
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/fritadeira-ultra-digital-2-em-1-ofrt650-48l-inox-sem-oleo-c-painel-touch-oster-220v/maxxmercadinho/fdo2129/a35d76ab77d6e4652e0f6075c2ac3131.jpeg" alt="Fritadeira Ultra Digital 2 em 1 OFRT650 4,8L Inox Sem Óleo C/ Painel Touch Oster 220V" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__corpo">
+          <h2 class="oferta__nome">Fritadeira Ultra Digital 2 em 1 OFRT650 4,8L Inox Sem Óleo C/ Painel Touch Oster 220V</h2>
+          
+          <p class="oferta__data">Divulgado em 20/09/2026</p>
+          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/fritadeira-ultra-digital-2-em-1-ofrt650-48l-inox-sem-oleo-c-painel-touch-oster-220v/p/hc78217jj2/ep/efso/" target="_blank" rel="noopener">
+            Ver preço na loja
+            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="envelope rodape__grade">
+    <p class="rodape__linha">Achadinhos do Cirne &middot; RJ &middot; Divulgador oficial Magalu</p>
+
+    <a class="rodape__loja" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+      magazinevoce.com.br/magazinesaquatem
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+    </a>
+
+    <a class="rodape__loja rodape__ofertas" href="/ofertas/">
+      Tudo que eu ja divulguei
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+    </a>
+
+    <ul class="rodape__redes" aria-label="Redes sociais">
+      <li>
+        <a class="rede" href="https://www.instagram.com/achadinhosdocirne" target="_blank" rel="noopener" aria-label="Instagram, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-instagram"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.tiktok.com/@achadinhosdocirne" target="_blank" rel="noopener" aria-label="TikTok, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-tiktok"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.youtube.com/@achadinhosdocirne" target="_blank" rel="noopener" aria-label="YouTube, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-youtube"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.facebook.com/achadinhosdocirne" target="_blank" rel="noopener" aria-label="Facebook, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-facebook"></use></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<!-- O MESMO site.js da página principal, e é ele que faz o botão de tema e o
+     menu do celular funcionarem aqui. Ele é defensivo: cada pedaço confere se
+     o elemento existe antes de mexer, e o trecho de animação está atrás de
+     'typeof window.gsap !== "undefined"'. Por isso não preciso carregar o GSAP
+     nesta página - sem ele o site.js só não anima, e não quebra.
+
+     Carregar o mesmo arquivo, e não uma cópia do que interessa, é o mesmo
+     motivo do rodapé: duas cópias divergem na primeira manutenção. -->
+<script src="../assets/js/site.js?v=3" defer></script>
+
+<script>
+/* As setas do carrossel. Elas são ATALHO, não o meio: a rolagem é nativa, e
+   arrastar no celular funciona sem nada disto. Por isso nascem escondidas no
+   CSS e só aparecem aqui - página sem script não mostra botão morto. */
+(function () {
+  var trilho = document.getElementById('trilho');
+  var setas  = document.getElementById('setas');
+  var ant    = document.getElementById('ant');
+  var prox   = document.getElementById('prox');
+  if (!trilho || !setas || !ant || !prox) { return; }
+
+  /* Nada a rolar? As setas continuam escondidas. */
+  function cabeTudo() { return trilho.scrollWidth <= trilho.clientWidth + 4; }
+
+  function atualizar() {
+    if (cabeTudo()) { setas.removeAttribute('data-pronto'); return; }
+    setas.setAttribute('data-pronto', '');
+    ant.disabled  = trilho.scrollLeft <= 4;
+    prox.disabled = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 4;
+  }
+
+  /* Rola uma "tela" por clique, mas sempre múltiplo de um cartão: parar no
+     meio de um cartão dá a impressão de que a página está quebrada. */
+  function passo() {
+    var card = trilho.querySelector('.oferta');
+    var larg = card ? card.getBoundingClientRect().width : 260;
+    var gap  = parseFloat(getComputedStyle(trilho).columnGap || '20') || 20;
+    var cabe = Math.max(1, Math.floor(trilho.clientWidth / (larg + gap)));
+    return cabe * (larg + gap);
+  }
+
+  ant.addEventListener('click',  function () { trilho.scrollBy({ left: -passo(), behavior: 'smooth' }); });
+  prox.addEventListener('click', function () { trilho.scrollBy({ left:  passo(), behavior: 'smooth' }); });
+  trilho.addEventListener('scroll', atualizar, { passive: true });
+  window.addEventListener('resize', atualizar);
+  /* as fotos entram com loading=lazy e mudam a largura total quando chegam */
+  window.addEventListener('load', atualizar);
+  atualizar();
+})();
+</script>
+
+<!-- gerado em 25/09/2026 00:10 por automacao\gerar-ofertas.ps1
+     O rodapé acima foi EXTRAÍDO do index.html, não copiado: mexeu lá, muda aqui. -->
+</body>
+</html>

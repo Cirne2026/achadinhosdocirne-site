@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Achadinhos do Cirne</title>
+<meta name="description" content="Ofertas garimpadas todo dia por quem foi vendedor de loja. Dicas tecnicas de eletrodomesticos, eletronicos e celulares, com pagamento, entrega e suporte do Magalu.">
+<meta name="theme-color" content="#061512" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBF3E2" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://achadinhosdocirne.netlify.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Achadinhos do Cirne">
+<meta property="og:title" content="Achadinhos do Cirne">
+<meta property="og:description" content="Ofertas garimpadas todo dia por quem foi vendedor de loja.">
+<meta property="og:url" content="https://achadinhosdocirne.netlify.app/">
+<meta property="og:image" content="https://achadinhosdocirne.netlify.app/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<link rel="preload" href="assets/fonts/cabinet-grotesk-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/cena-sala.jpg" as="image" fetchpriority="high">
+<!-- O ?v= existe para furar cache ja guardado em navegador de quem visitou o
+     site antes da correcao dos cabecalhos. Nenhum arquivo aqui tem impressao
+     digital no nome, entao trocar o conteudo nao troca a URL, e so a URL
+     diferente obriga o navegador a buscar de novo. Bastou uma vez: o
+     netlify.toml agora manda CSS e JS revalidarem sempre. -->
+<link rel="stylesheet" href="assets/css/site.css?v=3">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<!-- sprite de icones Phosphor, embutido para funcionar tambem sem servidor -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></symbol>
+<symbol id="i-lifebuoy" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.1,131.79a47.84,47.84,0,0,0,0-55.58l28.5-28.49a87.83,87.83,0,0,1,0,112.56ZM96,128a32,32,0,1,1,32,32A32,32,0,0,1,96,128Zm88.28-67.6L155.79,88.9a47.84,47.84,0,0,0-55.58,0L71.72,60.4a87.83,87.83,0,0,1,112.56,0ZM60.4,71.72l28.5,28.49a47.84,47.84,0,0,0,0,55.58L60.4,184.28a87.83,87.83,0,0,1,0-112.56ZM71.72,195.6l28.49-28.5a47.84,47.84,0,0,0,55.58,0l28.49,28.5a87.83,87.83,0,0,1-112.56,0Z"/></symbol>
+<symbol id="i-magnifying-glass" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-moon-stars" viewBox="0 0 256 256" fill="currentColor"><path d="M240,96a8,8,0,0,1-8,8H216v16a8,8,0,0,1-16,0V104H184a8,8,0,0,1,0-16h16V72a8,8,0,0,1,16,0V88h16A8,8,0,0,1,240,96ZM144,56h8v8a8,8,0,0,0,16,0V56h8a8,8,0,0,0,0-16h-8V32a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16Zm72.77,97a8,8,0,0,1,1.43,8A96,96,0,1,1,95.07,37.8a8,8,0,0,1,10.6,9.06A88.07,88.07,0,0,0,209.14,150.33,8,8,0,0,1,216.77,153Zm-19.39,14.88c-1.79.09-3.59.14-5.38.14A104.11,104.11,0,0,1,88,64c0-1.79,0-3.59.14-5.38A80,80,0,1,0,197.38,167.86Z"/></symbol>
+<symbol id="i-play-circle" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48.24-94.78-64-40A8,8,0,0,0,100,88v80a8,8,0,0,0,12.24,6.78l64-40a8,8,0,0,0,0-13.56ZM116,153.57V102.43L156.91,128Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 256 256" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 256 256" fill="currentColor"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-tiktok" viewBox="0 0 256 256" fill="currentColor"><path d="M224,72a48.05,48.05,0,0,1-48-48,8,8,0,0,0-8-8H128a8,8,0,0,0-8,8V156a20,20,0,1,1-28.57-18.08A8,8,0,0,0,96,130.69V88a8,8,0,0,0-9.4-7.88C50.91,86.48,24,119.1,24,156a76,76,0,0,0,152,0V116.29A103.25,103.25,0,0,0,224,128a8,8,0,0,0,8-8V80A8,8,0,0,0,224,72Zm-8,39.64a87.19,87.19,0,0,1-43.33-16.15A8,8,0,0,0,160,102v54a60,60,0,0,1-120,0c0-25.9,16.64-49.13,40-57.6v27.67A36,36,0,1,0,136,156V32h24.5A64.14,64.14,0,0,0,216,87.5Z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 256 256" fill="currentColor"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></symbol>
+<symbol id="i-youtube" viewBox="0 0 256 256" fill="currentColor"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></symbol>
+</svg>
+
+<div class="grao" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__interno">
+    <a class="marca" href="#topo" aria-label="Achadinhos do Cirne, ir para o inicio">
+      <img class="marca__selo" src="favicon.svg" alt="" width="30" height="30">
+      <span class="marca__nome">Achadinhos do Cirne</span>
+    </a>
+
+    <!-- Este e o MESMO nav no computador e no celular. No celular o CSS o
+         transforma em painel; nao existe um segundo menu escondido. Menu
+         duplicado e menu que um dia fica dessincronizado. -->
+    <nav class="nav__links" id="menu" aria-label="Navegacao do site">
+      <a class="nav__link" href="#loja">Loja</a>
+      <a class="nav__link" href="#quem-sou-eu">Quem sou eu</a>
+      <a class="nav__link" href="#dicas">Dicas</a>
+      <a class="nav__link" href="#canais">Canais</a>
+      <!-- Unico link daqui que sai da pagina. E a pagina que o link da bio do
+           Instagram aponta: la o link vai na bio, e uma bio tem um link so. -->
+      <a class="nav__link" href="/ofertas/">Ofertas</a>
+
+      <!-- So aparece no celular. Na barra estreita nao cabe logo + tema +
+           botao de menu + este CTA: medido, daria 383px numa tela de 375. Em
+           vez de espremer tudo, o CTA desce para dentro do painel, que e onde
+           ele tem espaco para ser grande de verdade. O irmao dele na barra
+           some no mesmo ponto, entao nunca ha dois visiveis ao mesmo tempo. -->
+      <a class="acao menu__acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+        Ver ofertas de hoje
+        <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+      </a>
+    </nav>
+
+    <button class="tema" id="tema" type="button" aria-label="Alternar entre tema claro e escuro">
+      <svg class="icone" id="tema-icone" aria-hidden="true" style="width:17px;height:17px"><use href="#i-sun"></use></svg>
+    </button>
+
+    <a class="acao acao--miuda nav__acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+      Ver ofertas de hoje
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+    </a>
+
+    <!-- Ultimo da barra: no celular fica na ponta direita, onde o polegar
+         alcanca. Some no computador, onde o menu ja esta todo a vista. -->
+    <button class="menu-botao" id="menu-botao" type="button"
+            aria-label="Abrir o menu" aria-expanded="false" aria-controls="menu">
+      <span class="menu-botao__barras" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- ===================== HEROI ===================== -->
+  <section class="heroi">
+    <div class="heroi__midia">
+      <img src="assets/img/cena-sala.jpg" alt="Cirne em casa mostrando no celular as ofertas do dia, com produtos sobre a mesa" width="1680" height="938" fetchpriority="high" decoding="async" id="heroi-img">
+    </div>
+    <div class="heroi__veu" aria-hidden="true"></div>
+
+    <div class="heroi__corpo">
+      <p class="rotulo heroi__rotulo">RJ &middot; Divulgador oficial Magalu</p>
+      <h1 class="heroi__titulo" data-palavras>Ofertas garimpadas todo dia</h1>
+      <div class="heroi__acoes">
+        <a class="acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+          Ver ofertas de hoje
+          <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </a>
+        <a class="acao-fio" href="#quem-sou-eu">Quem sou eu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GARANTIAS ===================== -->
+  <section class="garantias" aria-label="Garantias da compra">
+    <div class="envelope">
+      <ul class="garantias__grade">
+        <li class="garantia entra">
+          <svg class="garantia__icone" aria-hidden="true"><use href="#i-shield-check"></use></svg>
+          <span class="garantia__nome">Pagamento seguro</span>
+        </li>
+        <li class="garantia entra">
+          <svg class="garantia__icone" aria-hidden="true"><use href="#i-truck"></use></svg>
+          <span class="garantia__nome">Entrega garantida</span>
+        </li>
+        <li class="garantia entra">
+          <svg class="garantia__icone" aria-hidden="true"><use href="#i-lifebuoy"></use></svg>
+          <span class="garantia__nome">Suporte Magalu</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== LOJA ===================== -->
+  <section class="bloco" id="loja">
+    <div class="envelope">
+      <div class="loja__cabeca">
+        <h2 class="titulo-secao" data-palavras>Loja</h2>
+        <p class="texto">Entre na loja e veja o que est&aacute; dispon&iacute;vel hoje em eletrodom&eacute;sticos, eletr&ocirc;nicos, celulares, m&oacute;veis e utilidades dom&eacute;sticas. A compra acontece dentro do ambiente Magalu, com pagamento, entrega e suporte da pr&oacute;pria plataforma.</p>
+      </div>
+
+      <div class="carrossel" data-carrossel>
+        <div class="carrossel__pista" id="loja-pista" tabindex="0" role="group" aria-label="Categorias da loja, lista que rola na horizontal">
+          <a class="tile entra" href="https://www.magazinevoce.com.br/magazinesaquatem/eletrodomesticos/l/ed/" target="_blank" rel="noopener">
+            <span class="tile__foto"><img src="assets/img/cat-eletrodomesticos.jpg" alt="Cafeteira, air fryer e liquidificador sobre a mesa de madeira" width="1300" height="726" loading="lazy" decoding="async"></span>
+            <span class="tile__nome">Eletrodom&eacute;sticos</span>
+          </a>
+          <a class="tile entra" href="https://www.magazinevoce.com.br/magazinesaquatem/audio/l/ea/" target="_blank" rel="noopener">
+            <span class="tile__foto"><img src="assets/img/cat-eletronicos.jpg" alt="Fone de ouvido, caixa de som port&aacute;til, teclado e mouse sobre a mesa de madeira" width="1300" height="726" loading="lazy" decoding="async"></span>
+            <span class="tile__nome">Eletr&ocirc;nicos</span>
+          </a>
+          <a class="tile entra" href="https://www.magazinevoce.com.br/magazinesaquatem/celulares-e-smartphones/l/te/" target="_blank" rel="noopener">
+            <span class="tile__foto"><img src="assets/img/cat-celulares.jpg" alt="Tr&ecirc;s celulares com as telas apagadas sobre a mesa de madeira" width="1100" height="614" loading="lazy" decoding="async"></span>
+            <span class="tile__nome">Celulares</span>
+          </a>
+          <a class="tile entra" href="https://www.magazinevoce.com.br/magazinesaquatem/moveis/l/mo/" target="_blank" rel="noopener">
+            <span class="tile__foto"><img src="assets/img/cat-moveis.jpg" alt="Aparador de madeira, estante baixa com livros e mesa lateral redonda na sala" width="1100" height="614" loading="lazy" decoding="async"></span>
+            <span class="tile__nome">M&oacute;veis</span>
+          </a>
+          <a class="tile entra" href="https://www.magazinevoce.com.br/magazinesaquatem/utilidades-domesticas/l/ud/" target="_blank" rel="noopener">
+            <span class="tile__foto"><img src="assets/img/cat-utilidades.jpg" alt="Potes de vidro, escorredor de lou&ccedil;a, garrafa t&eacute;rmica e organizador de bambu sobre a mesa de madeira" width="1100" height="821" loading="lazy" decoding="async"></span>
+            <span class="tile__nome">Utilidades dom&eacute;sticas</span>
+          </a>
+        </div>
+
+        <div class="carrossel__pe">
+          <div class="carrossel__medidor" aria-hidden="true"><span class="carrossel__barra"></span></div>
+          <div class="carrossel__setas">
+            <button class="carrossel__seta carrossel__seta--antes" type="button" data-passo="-1" aria-controls="loja-pista" aria-label="Ver as categorias anteriores">
+              <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+            </button>
+            <button class="carrossel__seta" type="button" data-passo="1" aria-controls="loja-pista" aria-label="Ver as pr&oacute;ximas categorias">
+              <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="loja__pe">
+        <a class="acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+          Ver ofertas de hoje
+          <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== QUEM SOU EU ===================== -->
+  <section class="credencial bloco" id="quem-sou-eu">
+    <div class="envelope">
+      <div class="credencial__grade">
+        <div class="credencial__midia entra">
+          <img src="assets/img/quem-sou-eu.jpg?v=2" alt="Cirne na mesa de casa, apontando para o celular, com fone, caixa de som, mochila e cafeteira ao lado" width="940" height="940" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <h2 class="credencial__titulo" data-palavras>Quem sou eu</h2>
+          <p class="credencial__texto">Com uma experi&ecirc;ncia s&oacute;lida como vendedor na Magazine Luiza, alcancei diversas vezes o topo das vendas em todos os setores da loja. Esse conhecimento de produtos e marcas &eacute; exatamente o que eu coloco &agrave; sua disposi&ccedil;&atilde;o aqui. Minha proposta &eacute; simples: compartilhar dicas t&eacute;cnicas que ajudam de verdade na hora de escolher e garimpar as ofertas que realmente valem a pena. Voc&ecirc; compra com informa&ccedil;&atilde;o clara na m&atilde;o e com a seguran&ccedil;a de pagamento, entrega e suporte do Magalu. Seja bem-vindo &agrave; minha loja.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DICAS: TECNOLOGIA (pilha fixa) ===================== -->
+  <section id="dicas">
+    <div class="envelope bloco pilha__cabeca">
+      <h2 class="titulo-secao" data-palavras>Dicas &middot; Tecnologia &amp; Acess&oacute;rios</h2>
+      <p class="texto" style="margin-top:1.4rem">Algumas diferen&ccedil;as importantes que voc&ecirc; pode considerar ao escolher um notebook com base no processador:</p>
+      <div class="video" style="margin-top:2rem">
+                  <button class="video__cartao" type="button" data-video="dSweO709N_4" data-titulo="Desbravando o Mundo dos Processadores" aria-label="Assistir: Desbravando o Mundo dos Processadores">
+                    <span class="video__capa">
+                      <img src="assets/img/video-processadores.jpg" alt="Capa do v&iacute;deo sobre processadores" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">Desbravando o Mundo dos Processadores</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+    </div>
+
+    <div class="pilha" id="pilha">
+      <div class="pilha__item">
+        <div class="envelope">
+          <article class="painel">
+            <h3 class="painel__marca">Intel <span>Processadores</span></h3>
+            <div class="atributos">
+              <div class="atributo">
+                <h4 class="atributo__nome">Variedade de Modelos</h4>
+                <p>A Intel oferece uma ampla variedade de modelos de processadores, desde os de baixo consumo de energia da s&eacute;rie U at&eacute; os de alto desempenho da s&eacute;rie H.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Desempenho Single-Core</h4>
+                <p>Em geral, os processadores Intel tendem a ter um desempenho single-core forte, o que pode ser ben&eacute;fico em aplicativos que n&atilde;o s&atilde;o otimizados para v&aacute;rios n&uacute;cleos.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Integra&ccedil;&atilde;o Gr&aacute;fica</h4>
+                <p>Muitos processadores Intel v&ecirc;m com gr&aacute;ficos integrados da Intel, adequados para tarefas cotidianas e multim&iacute;dia leve. No entanto, para jogos ou tarefas gr&aacute;ficas mais intensas, uma placa de v&iacute;deo dedicada pode ser prefer&iacute;vel.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pilha__item">
+        <div class="envelope">
+          <article class="painel">
+            <h3 class="painel__marca">AMD <span>Processadores</span></h3>
+            <div class="atributos">
+              <div class="atributo">
+                <h4 class="atributo__nome">Arquitetura Ryzen</h4>
+                <p>Os processadores AMD Ryzen t&ecirc;m ganhado destaque recentemente, oferecendo um desempenho competitivo em compara&ccedil;&atilde;o com os processadores Intel.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Desempenho Multicore</h4>
+                <p>Os processadores Ryzen muitas vezes apresentam um desempenho multicore s&oacute;lido, o que &eacute; ben&eacute;fico para tarefas que podem tirar proveito de v&aacute;rios n&uacute;cleos, como edi&ccedil;&atilde;o de v&iacute;deo e renderiza&ccedil;&atilde;o.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Vega Graphics Integrados</h4>
+                <p>Alguns processadores AMD Ryzen possuem gr&aacute;ficos integrados da s&eacute;rie Vega, que oferecem desempenho gr&aacute;fico decente para tarefas cotidianas e jogos leves.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pilha__item">
+        <div class="envelope">
+          <article class="painel">
+            <h3 class="painel__marca">Outros fatores</h3>
+            <div class="atributos">
+              <div class="atributo">
+                <h4 class="atributo__nome">Consumo de Energia</h4>
+                <p>Processadores de baixa pot&ecirc;ncia, como os da s&eacute;rie U da Intel ou os equivalentes da AMD, s&atilde;o comuns em notebooks finos e leves, oferecendo efici&ecirc;ncia energ&eacute;tica para maior autonomia da bateria.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Nomenclatura do Modelo</h4>
+                <p>A nomenclatura dos modelos pode ser um pouco complexa, com n&uacute;meros e letras indicando caracter&iacute;sticas espec&iacute;ficas, como a s&eacute;rie, a gera&ccedil;&atilde;o e a pot&ecirc;ncia.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Atualiza&ccedil;&otilde;es de Hardware</h4>
+                <p>Verifique se o notebook permite atualiza&ccedil;&otilde;es de hardware, como a troca do processador. Nem todos os notebooks permitem esse tipo de upgrade.</p>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">Pre&ccedil;o</h4>
+                <p>Em geral, notebooks com processadores Intel podem ser um pouco mais caros, especialmente em modelos premium. No entanto, essa diferen&ccedil;a de pre&ccedil;o pode variar dependendo do modelo espec&iacute;fico e do conjunto de recursos.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="pilha__item">
+        <div class="envelope">
+          <article class="painel">
+            <h3 class="painel__marca">Processadores Intel <span>Por s&eacute;rie</span></h3>
+            <div class="atributos">
+              <div class="atributo">
+                <h4 class="atributo__nome">S&eacute;rie Core i3</h4>
+                <ul>
+                  <li>Projetada para uso b&aacute;sico e tarefas cotidianas.</li>
+                  <li>Geralmente possui dois ou quatro n&uacute;cleos.</li>
+                  <li>Adequada para navega&ccedil;&atilde;o na web, produtividade e streaming de m&iacute;dia.</li>
+                </ul>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">S&eacute;rie Core i5</h4>
+                <ul>
+                  <li>Um equil&iacute;brio entre desempenho e pre&ccedil;o.</li>
+                  <li>Pode ter quatro ou seis n&uacute;cleos, proporcionando bom desempenho multitarefa.</li>
+                  <li>Adequada para jogos leves, edi&ccedil;&atilde;o de fotos e multitarefa moderada.</li>
+                </ul>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">S&eacute;rie Core i7</h4>
+                <ul>
+                  <li>Oferece desempenho robusto para multitarefa e tarefas mais exigentes.</li>
+                  <li>Pode ter quatro a oito n&uacute;cleos.</li>
+                  <li>Adequada para edi&ccedil;&atilde;o de v&iacute;deo, jogos mais intensivos e tarefas de produtividade avan&ccedil;ada.</li>
+                </ul>
+              </div>
+              <div class="atributo">
+                <h4 class="atributo__nome">S&eacute;rie Core i9</h4>
+                <ul>
+                  <li>Projetada para entusiastas e profissionais que exigem alto desempenho.</li>
+                  <li>Pode ter seis a oito n&uacute;cleos ou mais.</li>
+                  <li>Adequada para edi&ccedil;&atilde;o de v&iacute;deo 4K, renderiza&ccedil;&atilde;o 3D e tarefas computacionais intensivas.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="envelope" style="padding-bottom:var(--bloco)">
+      <p class="remate">Ao escolher um notebook, &eacute; importante avaliar suas necessidades espec&iacute;ficas de uso, como navega&ccedil;&atilde;o na web, produtividade, edi&ccedil;&atilde;o de m&iacute;dia ou jogos, e escolher um processador que atenda a essas demandas. Al&eacute;m disso, lembre-se de que o processador &eacute; apenas um componente do sistema, e outros fatores, como RAM, armazenamento e placa gr&aacute;fica, tamb&eacute;m desempenham um papel crucial no desempenho geral do notebook.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DICAS: ELETRODOMESTICOS (pan horizontal) ===================== -->
+  <section class="pan" id="eletrodomesticos">
+    <div class="envelope pan__cabeca">
+      <h2 class="titulo-secao" data-palavras>Dicas &middot; Eletrodom&eacute;sticos</h2>
+      <h3 class="sub-bloco__titulo" style="margin-top:1.6rem">Smart TV Samsung, LG ou TCL?</h3>
+      <p class="texto">As marcas Samsung, LG e TCL s&atilde;o conhecidas por produzirem TVs de alta qualidade, mas existem algumas diferen&ccedil;as not&aacute;veis em suas abordagens, tecnologias e linhas de produtos. Abaixo est&atilde;o algumas caracter&iacute;sticas distintivas de cada marca:</p>
+      <div class="video" style="margin-top:2rem">
+                  <button class="video__cartao" type="button" data-video="wqkoZPwjkhE" data-titulo="Smart TV: Samsung, LG ou TCL" aria-label="Assistir: Smart TV: Samsung, LG ou TCL">
+                    <span class="video__capa">
+                      <img src="assets/img/video-smarttv.jpg" alt="Capa do v&iacute;deo sobre Smart TV" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">Smart TV: Samsung, LG ou TCL</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+    </div>
+
+    <div class="pan__palco" id="pan-palco">
+      <div class="pan__trilho" id="pan-trilho">
+        <article class="marca-tv">
+          <h3 class="marca-tv__nome">Samsung</h3>
+          <div class="atributos">
+            <div class="atributo">
+              <h4 class="atributo__nome">Tizen OS</h4>
+              <p>As TVs Samsung geralmente utilizam o sistema operacional Tizen. Este sistema oferece uma interface intuitiva, suporte a uma ampla variedade de aplicativos e integra&ccedil;&atilde;o f&aacute;cil com outros dispositivos Samsung.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Tecnologia de Tela</h4>
+              <p>A Samsung &eacute; conhecida por suas TVs QLED, que utilizam a tecnologia Quantum Dot para melhorar a qualidade da cor e do brilho. As TVs OLED da Samsung tamb&eacute;m est&atilde;o dispon&iacute;veis, embora sejam menos comuns do que as QLED.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Design Inovador</h4>
+              <p>A Samsung &eacute; conhecida por seus designs elegantes e inovadores, muitas vezes apresentando TVs ultrafinas e bordas m&iacute;nimas.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="marca-tv">
+          <h3 class="marca-tv__nome">LG</h3>
+          <div class="atributos">
+            <div class="atributo">
+              <h4 class="atributo__nome">webOS</h4>
+              <p>As TVs LG utilizam o sistema operacional webOS, conhecido por sua interface simples e intuitiva. Ele oferece uma experi&ecirc;ncia de usu&aacute;rio f&aacute;cil de navegar e &eacute; elogiado por sua efici&ecirc;ncia.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Tecnologia OLED</h4>
+              <p>Uma das principais caracter&iacute;sticas da LG &eacute; seu investimento na tecnologia OLED, proporcionando uma qualidade de imagem excepcional com pretos mais profundos e cores vibrantes.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Flexibilidade</h4>
+              <p>A LG oferece TVs OLED em diversos tamanhos e modelos, proporcionando op&ccedil;&otilde;es flex&iacute;veis para diferentes or&ccedil;amentos e necessidades.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="marca-tv">
+          <h3 class="marca-tv__nome">TCL</h3>
+          <div class="atributos">
+            <div class="atributo">
+              <h4 class="atributo__nome">Pre&ccedil;o Acess&iacute;vel</h4>
+              <p>A TCL &eacute; frequentemente associada a TVs de bom desempenho a pre&ccedil;os mais acess&iacute;veis em compara&ccedil;&atilde;o com algumas marcas concorrentes. Eles buscam oferecer um bom custo-benef&iacute;cio.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Roku TV</h4>
+              <p>Algumas TVs TCL utilizam o sistema operacional Roku TV, proporcionando uma ampla variedade de aplicativos e servi&ccedil;os de streaming. Isso pode ser atraente para quem gosta da simplicidade do sistema Roku.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">Variedade de Modelos</h4>
+              <p>A TCL oferece uma variedade de modelos e tamanhos para atender a diferentes prefer&ecirc;ncias e or&ccedil;amentos, desde TVs 4K acess&iacute;veis at&eacute; modelos mais avan&ccedil;ados.</p>
+            </div>
+            <div class="atributo">
+              <h4 class="atributo__nome">QLED Technology</h4>
+              <p>Mais recentemente, a TCL tamb&eacute;m introduziu TVs QLED, utilizando a tecnologia Quantum Dot para melhorar a qualidade da imagem.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="envelope" style="padding-bottom:var(--bloco)">
+      <p class="remate">&Eacute; importante notar que as caracter&iacute;sticas espec&iacute;ficas podem variar entre modelos individuais de cada marca, e a escolha da marca tamb&eacute;m depende das prefer&ecirc;ncias pessoais, necessidades e or&ccedil;amento do consumidor. Sempre &eacute; aconselh&aacute;vel analisar avalia&ccedil;&otilde;es espec&iacute;ficas de modelos e considerar suas pr&oacute;prias prioridades ao escolher uma Smart TV.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DICAS: OUTROS PRODUTOS (revelacao) ===================== -->
+  <section class="bloco" id="outros-produtos">
+    <div class="envelope">
+      <div class="guias__cabeca">
+        <h2 class="titulo-secao" data-palavras>Dicas &middot; Outros Produtos</h2>
+      </div>
+
+      <div class="guias">
+
+        <!-- suplementos -->
+        <div class="guia">
+          <button class="guia__botao" type="button" aria-expanded="false" aria-controls="g1">
+            Os suplementos Whey Protein, Creatina e Glutamina
+            <span class="guia__sinal" aria-hidden="true">
+              <svg class="icone"><use href="#i-plus"></use></svg>
+            </span>
+          </button>
+          <div class="guia__painel" id="g1" data-aberto="nao" role="region">
+            <div class="guia__interno">
+              <div class="guia__conteudo">
+                <div class="video">
+                  <button class="video__cartao" type="button" data-video="KvCCvVQSALk" data-titulo="Suplementos: Whey Protein, Creatina e Glutamina" aria-label="Assistir: Suplementos: Whey Protein, Creatina e Glutamina">
+                    <span class="video__capa">
+                      <img src="assets/img/video-suplementos.jpg" alt="Capa do v&iacute;deo sobre suplementos" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">Suplementos: Whey Protein, Creatina e Glutamina</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+
+                <div class="atributos">
+                  <div>
+                    <h4 class="sub-bloco__nome">1. Whey Protein</h4>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">O que &eacute;</h5>
+                      <p>Whey Protein &eacute; uma prote&iacute;na de soro de leite, extra&iacute;da durante o processo de fabrica&ccedil;&atilde;o do queijo. &Eacute; uma fonte de prote&iacute;na completa, contendo todos os amino&aacute;cidos essenciais.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">Benef&iacute;cios</h5>
+                      <ul>
+                        <li>Constru&ccedil;&atilde;o Muscular: ajuda na s&iacute;ntese de prote&iacute;nas, promovendo o crescimento e a repara&ccedil;&atilde;o muscular.</li>
+                        <li>Recupera&ccedil;&atilde;o: pode acelerar a recupera&ccedil;&atilde;o p&oacute;s-exerc&iacute;cio devido &agrave; r&aacute;pida absor&ccedil;&atilde;o.</li>
+                        <li>Sensa&ccedil;&atilde;o de Saciedade: pode auxiliar na saciedade e controle do apetite.</li>
+                      </ul>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Quando Usar</h5>
+                      <ul>
+                        <li>P&oacute;s-Treino: muitas pessoas optam por consumir Whey Protein logo ap&oacute;s o treino para promover a recupera&ccedil;&atilde;o muscular.</li>
+                        <li>Refei&ccedil;&otilde;es R&aacute;pidas: pode ser usado como uma fonte r&aacute;pida de prote&iacute;na em refei&ccedil;&otilde;es ou lanches.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="sub-bloco__nome">2. Creatina</h4>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">O que &eacute;</h5>
+                      <p>A creatina &eacute; um composto natural encontrado nos m&uacute;sculos que desempenha um papel crucial na produ&ccedil;&atilde;o de energia durante exerc&iacute;cios de alta intensidade.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">Benef&iacute;cios</h5>
+                      <ul>
+                        <li>Melhora do Desempenho: ajuda a fornecer energia r&aacute;pida para atividades de alta intensidade, como levantamento de peso.</li>
+                        <li>Crescimento Muscular: pode aumentar a massa magra e o volume muscular.</li>
+                        <li>Recupera&ccedil;&atilde;o: pode reduzir a fadiga muscular e acelerar a recupera&ccedil;&atilde;o entre as sess&otilde;es de treino.</li>
+                      </ul>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Quando Usar</h5>
+                      <ul>
+                        <li>Pr&eacute;-Treino: pode ser tomada antes do treino para fornecer energia adicional.</li>
+                        <li>P&oacute;s-Treino: alguns optam por incluir a creatina em sua suplementa&ccedil;&atilde;o p&oacute;s-treino.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="sub-bloco__nome">3. Glutamina</h4>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">O que &eacute;</h5>
+                      <p>A Glutamina &eacute; um amino&aacute;cido que desempenha um papel importante no metabolismo proteico e no sistema imunol&oacute;gico.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.6rem">
+                      <h5 class="atributo__nome">Benef&iacute;cios</h5>
+                      <ul>
+                        <li>Recupera&ccedil;&atilde;o Muscular: ajuda na recupera&ccedil;&atilde;o e redu&ccedil;&atilde;o da dor muscular ap&oacute;s o treino.</li>
+                        <li>Sistema Imunol&oacute;gico: pode fortalecer o sistema imunol&oacute;gico, especialmente em per&iacute;odos de treino intenso.</li>
+                        <li>Integridade do Intestino: a Glutamina &eacute; importante para a sa&uacute;de intestinal.</li>
+                      </ul>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Quando Usar</h5>
+                      <ul>
+                        <li>P&oacute;s-Treino: pode ser usada ap&oacute;s o treino para auxiliar na recupera&ccedil;&atilde;o.</li>
+                        <li>Antes de Dormir: algumas pessoas optam por tomar Glutamina antes de dormir para promover a recupera&ccedil;&atilde;o noturna.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="nota">
+                  <span class="nota__nome">Nota importante</span>
+                  <p>Antes de iniciar qualquer suplementa&ccedil;&atilde;o, &eacute; sempre aconselh&aacute;vel consultar um profissional de sa&uacute;de ou um nutricionista para garantir que esses suplementos sejam apropriados para suas necessidades individuais. Al&eacute;m disso, a obten&ccedil;&atilde;o de nutrientes atrav&eacute;s de uma dieta equilibrada deve ser priorizada sempre que poss&iacute;vel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- notebook -->
+        <div class="guia">
+          <button class="guia__botao" type="button" aria-expanded="false" aria-controls="g2">
+            O que saber na hora de escolher seu notebook?
+            <span class="guia__sinal" aria-hidden="true">
+              <svg class="icone"><use href="#i-plus"></use></svg>
+            </span>
+          </button>
+          <div class="guia__painel" id="g2" data-aberto="nao" role="region">
+            <div class="guia__interno">
+              <div class="guia__conteudo">
+                <div class="video">
+                  <button class="video__cartao" type="button" data-video="bcLrdmtuYik" data-titulo="Notebook para estudos ou para jogos" aria-label="Assistir: Notebook para estudos ou para jogos">
+                    <span class="video__capa">
+                      <img src="assets/img/video-notebook.jpg" alt="Capa do v&iacute;deo sobre notebooks" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">Notebook para estudos ou para jogos</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+                <p class="texto">Os notebooks projetados para estudos e os notebooks voltados para jogos geralmente possuem diferentes conjuntos de especifica&ccedil;&otilde;es e caracter&iacute;sticas, pois s&atilde;o otimizados para especificidades espec&iacute;ficas. Aqui est&atilde;o algumas das principais diferen&ccedil;as entre um notebook para estudos e um notebook para jogos:</p>
+
+                <div class="atributos">
+                  <div>
+                    <h4 class="sub-bloco__nome">Notebook para estudos</h4>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Desempenho Geral</h5>
+                      <p>Os notebooks para estudos geralmente t&ecirc;m um desempenho mais equilibrado, atendendo &agrave;s necessidades b&aacute;sicas de produtividade, como navega&ccedil;&atilde;o na internet, processamento de texto, apresenta&ccedil;&otilde;es e uso geral de aplicativos de produtividade.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Peso e Portabilidade</h5>
+                      <p>Notebooks de estudo s&atilde;o projetados para serem leves e pr&aacute;ticos, facilitando o transporte entre aulas, bibliotecas ou locais de estudo.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Bateria de Longa Dura&ccedil;&atilde;o</h5>
+                      <p>A &ecirc;nfase pode ser colocada na vida &uacute;til da bateria para suportar um dia inteiro de estudos sem a necessidade de recargas frequentes.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Gr&aacute;ficos Integrados</h5>
+                      <p>Geralmente, os notebooks para estudos utilizam gr&aacute;ficos integrados ao processador, que s&atilde;o suficientes para as tarefas do dia a dia, mas podem n&atilde;o ser adequados para jogos mais exigentes.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Custo Acess&iacute;vel</h5>
+                      <p>Esses notebooks muitas vezes s&atilde;o mais acess&iacute;veis em termos de pre&ccedil;o, pois n&atilde;o requerem hardware de alto desempenho.</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="sub-bloco__nome">Notebook para jogos</h4>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Desempenho Gr&aacute;fico</h5>
+                      <p>Os notebooks para jogos s&atilde;o fornecidos com placas gr&aacute;ficas dedicadas de alto desempenho para lidar com os requisitos gr&aacute;ficos exigentes dos jogos modernos.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Processador Poderoso</h5>
+                      <p>Podem incluir processadores muito mais potentes para lidar com a carga de trabalho intensiva dos jogos.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Resfriamento Eficiente</h5>
+                      <p>Sistemas de resfriamento mais robustos s&atilde;o comuns para evitar o superaquecimento durante sess&otilde;es prolongadas de jogos.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Tela de Alta Taxa de Atualiza&ccedil;&atilde;o</h5>
+                      <p>Muitos notebooks para jogos possuem telas com taxas de atualiza&ccedil;&atilde;o mais altas para proporcionar uma experi&ecirc;ncia de jogo mais suave.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Teclado Retroiluminado e Recursos Gaming</h5>
+                      <p>Alguns modelos incluem teclados retroiluminados, teclas program&aacute;veis e outros recursos espec&iacute;ficos para jogos.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Armazenamento R&aacute;pido</h5>
+                      <p>Podem ter unidades de armazenamento SSD para carregamento r&aacute;pido de jogos.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Design Est&eacute;tico</h5>
+                      <p>Muitos notebooks para jogos t&ecirc;m designs mais ousados e est&eacute;ticos para atrair o p&uacute;blico gamer.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="remate">Em resumo, a principal diferen&ccedil;a est&aacute; na orienta&ccedil;&atilde;o para tarefas espec&iacute;ficas. Notebooks para estudos s&atilde;o projetados para tarefas di&aacute;rias de produtividade, enquanto notebooks para jogos s&atilde;o otimizados para fornecer um desempenho gr&aacute;fico superior e recursos espec&iacute;ficos para jogos. A escolha depende de suas necessidades e prioridades.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MDP ou MDF -->
+        <div class="guia">
+          <button class="guia__botao" type="button" aria-expanded="false" aria-controls="g3">
+            MDP ou MDF?
+            <span class="guia__sinal" aria-hidden="true">
+              <svg class="icone"><use href="#i-plus"></use></svg>
+            </span>
+          </button>
+          <div class="guia__painel" id="g3" data-aberto="nao" role="region">
+            <div class="guia__interno">
+              <div class="guia__conteudo">
+                <div class="video">
+                  <button class="video__cartao" type="button" data-video="FtlDDaQBBEE" data-titulo="MDP ou MDF" aria-label="Assistir: MDP ou MDF">
+                    <span class="video__capa">
+                      <img src="assets/img/video-mdp-mdf.jpg" alt="Capa do v&iacute;deo sobre MDP e MDF" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">MDP ou MDF</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+                <p class="texto">MDP (Medium Density Particleboard ou Painel de Part&iacute;culas de M&eacute;dia Densidade) e MDF (Medium Density Fiberboard ou Fibra de M&eacute;dia Densidade) s&atilde;o dois tipos de pain&eacute;is de madeira frequentemente utilizados na fabrica&ccedil;&atilde;o de m&oacute;veis e na constru&ccedil;&atilde;o. Embora ambos sejam produtos de madeira, h&aacute; diferen&ccedil;as fundamentais em sua composi&ccedil;&atilde;o e processo de fabrica&ccedil;&atilde;o. Aqui est&atilde;o as principais diferen&ccedil;as entre MDP e MDF:</p>
+
+                <div class="atributos">
+                  <div>
+                    <h4 class="sub-bloco__nome">MDP (aglomerado de m&eacute;dia densidade)</h4>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Composi&ccedil;&atilde;o</h5>
+                      <p>O MDP &eacute; composto por part&iacute;culas de madeira, como serragem e pequenos fragmentos de madeira, unidos por resina. As part&iacute;culas s&atilde;o prensadas sob alta press&atilde;o e temperatura para formar chapas de MDP.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Camadas Diferenciadas</h5>
+                      <p>O MDP &eacute; constru&iacute;do em camadas, onde as part&iacute;culas externas s&atilde;o mais finas, e as internas s&atilde;o mais grossas. As camadas externas geralmente s&atilde;o feitas de part&iacute;culas mais finas, proporcionando uma superf&iacute;cie mais lisa.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Superf&iacute;cie</h5>
+                      <p>A superf&iacute;cie do MDP pode apresentar uma textura menos uniforme em compara&ccedil;&atilde;o com o MDF, devido &agrave; presen&ccedil;a de part&iacute;culas.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Peso</h5>
+                      <p>O MDP tende a ser mais leve em compara&ccedil;&atilde;o com o MDF.</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="sub-bloco__nome">MDF (placa de fibra de m&eacute;dia densidade)</h4>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Composi&ccedil;&atilde;o</h5>
+                      <p>O MDF &eacute; fabricado a partir de fibras de madeira fina, obtidas por meio de processos mec&acirc;nicos e qu&iacute;micos. As fibras s&atilde;o combinadas com resinas e submetidas a alta press&atilde;o e temperatura para formar chapas de MDF.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Uniformidade da superf&iacute;cie</h5>
+                      <p>A superf&iacute;cie do MDF &eacute; geralmente mais uniforme e lisa em compara&ccedil;&atilde;o com o MDP, devido &agrave; natureza das fibras finas utilizadas em sua fabrica&ccedil;&atilde;o.</p>
+                    </div>
+                    <div class="atributo" style="margin-bottom:1.4rem">
+                      <h5 class="atributo__nome">Processamento</h5>
+                      <p>O MDF aceita cortes, bordas e molduras mais precisas devido &agrave; sua consist&ecirc;ncia e uniformidade.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Peso</h5>
+                      <p>O MDF &eacute; geralmente mais denso e mais pesado em compara&ccedil;&atilde;o com o MDP.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="sub-bloco__nome">Escolha entre MDP e MDF</h4>
+                  <div class="atributos">
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Uso Geral</h5>
+                      <p>Ambos s&atilde;o amplamente utilizados na fabrica&ccedil;&atilde;o de m&oacute;veis e em projetos de constru&ccedil;&atilde;o.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Custo</h5>
+                      <p>O MDP geralmente &eacute; mais acess&iacute;vel em termos de custo, enquanto o MDF pode ser um pouco mais caro.</p>
+                    </div>
+                    <div class="atributo">
+                      <h5 class="atributo__nome">Aplica&ccedil;&otilde;es Espec&iacute;ficas</h5>
+                      <p>A escolha entre MDP e MDF muitas vezes depende da aplica&ccedil;&atilde;o espec&iacute;fica e dos requisitos est&eacute;ticos do projeto.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="remate">Ambos os materiais t&ecirc;m suas vantagens: a escolha entre MDP e MDF depender&aacute; das necessidades espec&iacute;ficas do projeto, do or&ccedil;amento dispon&iacute;vel e das prefer&ecirc;ncias est&eacute;ticas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tradicional ou inverter -->
+        <div class="guia">
+          <button class="guia__botao" type="button" aria-expanded="false" aria-controls="g4">
+            Tradicional ou inverter?
+            <span class="guia__sinal" aria-hidden="true">
+              <svg class="icone"><use href="#i-plus"></use></svg>
+            </span>
+          </button>
+          <div class="guia__painel" id="g4" data-aberto="nao" role="region">
+            <div class="guia__interno">
+              <div class="guia__conteudo">
+                <div class="video">
+                  <button class="video__cartao" type="button" data-video="GDm9cnz0X-A" data-titulo="Tradicional ou Inverter" aria-label="Assistir: Tradicional ou Inverter">
+                    <span class="video__capa">
+                      <img src="assets/img/video-inverter.jpg" alt="Capa do v&iacute;deo sobre tecnologia inverter" width="800" height="450" loading="lazy" decoding="async">
+                      <span class="video__play" aria-hidden="true"><svg class="icone"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                    <span class="video__texto">
+                      <span class="video__titulo">Tradicional ou Inverter</span>
+                      <span class="video__acao">Assistir aqui <svg class="icone" aria-hidden="true"><use href="#i-play-circle"></use></svg></span>
+                    </span>
+                  </button>
+                </div>
+                <p class="texto">A tecnologia inverter &eacute; uma evolu&ccedil;&atilde;o em rela&ccedil;&atilde;o &agrave; tecnologia tradicional em diversos dispositivos e equipamentos, sendo comumente associada a aparelhos de ar condicionado e eletrodom&eacute;sticos. Vamos analisar as diferen&ccedil;as entre essas duas tecnologias:</p>
+
+                <div class="atributos">
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Funcionamento Tradicional</h4>
+                    <p>Nos sistemas tradicionais, os equipamentos, como compressores de ar condicionado e motores de eletrodom&eacute;sticos, funcionam em dois modos: ligados ou desligados. Quando atingem a temperatura desejada, eles desligam, e quando a temperatura aumenta novamente, eles ligam para manter o ambiente no n&iacute;vel desejado.</p>
+                  </div>
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Funcionamento Inverter</h4>
+                    <p>A tecnologia inverter, por outro lado, permite um controle mais preciso da opera&ccedil;&atilde;o do dispositivo. Em vez de ligar e desligar, o motor ou compressor funciona continuamente, mas com velocidade vari&aacute;vel. A inversora ajusta a pot&ecirc;ncia do equipamento de acordo com a demanda em tempo real, mantendo a temperatura de maneira mais eficiente. Isso resulta em economia de energia, menor desgaste mec&acirc;nico e um ajuste mais est&aacute;vel da temperatura.</p>
+                  </div>
+                </div>
+
+                <div class="atributos">
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Efici&ecirc;ncia Energ&eacute;tica</h4>
+                    <p>A principal vantagem da tecnologia inverter &eacute; sua maior efici&ecirc;ncia energ&eacute;tica. Como o equipamento n&atilde;o precisa ligar e desligar com frequ&ecirc;ncia, h&aacute; menos desperd&iacute;cio de energia no processo de partida, resultando em economia de eletricidade.</p>
+                  </div>
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Estabilidade de temperatura</h4>
+                    <p>Os dispositivos com tecnologia inverter tendem a manter uma temperatura mais est&aacute;vel no ambiente, pois podem ajustar sua capacidade de opera&ccedil;&atilde;o de forma cont&iacute;nua.</p>
+                  </div>
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Durabilidade</h4>
+                    <p>Em geral, os equipamentos com tecnologia inverter podem ter uma vida &uacute;til mais longa devido &agrave; redu&ccedil;&atilde;o do estresse mec&acirc;nico associado &agrave;s constantes partidas e paradas.</p>
+                  </div>
+                  <div class="atributo">
+                    <h4 class="atributo__nome">Custo Inicial</h4>
+                    <p>Os dispositivos com tecnologia inverter podem ter um custo inicial um pouco mais alto que os modelos tradicionais. No entanto, essa diferen&ccedil;a muitas vezes &eacute; compensada ao longo do tempo pela economia de energia.</p>
+                  </div>
+                </div>
+
+                <p class="remate">Portanto, enquanto a tecnologia tradicional muitas vezes opera em ciclos de ligar/desligar, a tecnologia inverter permite uma opera&ccedil;&atilde;o mais suave, eficiente e controlada, resultando em benef&iacute;cios econ&ocirc;micos e ambientais a longo prazo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CANAIS ===================== -->
+  <section class="canais bloco" id="canais">
+    <div class="envelope">
+      <div class="canais__cabeca">
+        <p class="rotulo">Canais &middot; @achadinhosdocirne</p>
+      </div>
+      <div>
+        <a class="canal entra" href="https://www.instagram.com/achadinhosdocirne" target="_blank" rel="noopener">
+          <span class="canal__nome">Instagram</span>
+          <span class="canal__arroba">@achadinhosdocirne</span>
+          <svg class="canal__seta" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+        </a>
+        <a class="canal entra" href="https://www.tiktok.com/@achadinhosdocirne" target="_blank" rel="noopener">
+          <span class="canal__nome">TikTok</span>
+          <span class="canal__arroba">@achadinhosdocirne</span>
+          <svg class="canal__seta" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+        </a>
+        <a class="canal entra" href="https://www.youtube.com/@achadinhosdocirne" target="_blank" rel="noopener">
+          <span class="canal__nome">YouTube</span>
+          <span class="canal__arroba">@achadinhosdocirne</span>
+          <svg class="canal__seta" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+        </a>
+        <a class="canal entra" href="https://www.facebook.com/achadinhosdocirne" target="_blank" rel="noopener">
+          <span class="canal__nome">Facebook</span>
+          <span class="canal__arroba">@achadinhosdocirne</span>
+          <svg class="canal__seta" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FECHO ===================== -->
+  <section class="fecho">
+    <div class="fecho__midia">
+      <img src="assets/img/fecho-ambiente.jpg?v=2" alt="" width="1600" height="900" loading="lazy" decoding="async" id="fecho-img">
+    </div>
+    <div class="fecho__veu" aria-hidden="true"></div>
+    <div class="envelope">
+      <div class="fecho__corpo">
+        <h2 class="fecho__titulo" data-palavras>Bora garimpar?</h2>
+        <div class="fecho__acao">
+          <a class="acao" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+            Ver ofertas de hoje
+            <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </a>
+        </div>
+        <p class="fecho__aviso">Confira o pre&ccedil;o no link, muda r&aacute;pido.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="envelope rodape__grade">
+    <p class="rodape__linha">Achadinhos do Cirne &middot; RJ &middot; Divulgador oficial Magalu</p>
+
+    <a class="rodape__loja" href="https://www.magazinevoce.com.br/magazinesaquatem/" target="_blank" rel="noopener">
+      magazinevoce.com.br/magazinesaquatem
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg>
+    </a>
+
+    <a class="rodape__loja rodape__ofertas" href="/ofertas/">
+      Tudo que eu ja divulguei
+      <svg class="icone" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+    </a>
+
+    <ul class="rodape__redes" aria-label="Redes sociais">
+      <li>
+        <a class="rede" href="https://www.instagram.com/achadinhosdocirne" target="_blank" rel="noopener" aria-label="Instagram, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-instagram"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.tiktok.com/@achadinhosdocirne" target="_blank" rel="noopener" aria-label="TikTok, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-tiktok"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.youtube.com/@achadinhosdocirne" target="_blank" rel="noopener" aria-label="YouTube, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-youtube"></use></svg>
+        </a>
+      </li>
+      <li>
+        <a class="rede" href="https://www.facebook.com/achadinhosdocirne" target="_blank" rel="noopener" aria-label="Facebook, @achadinhosdocirne">
+          <svg class="icone" aria-hidden="true"><use href="#i-facebook"></use></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<script src="assets/js/gsap.min.js" defer></script>
+<script src="assets/js/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/site.js?v=3" defer></script>
+</body>
+</html>
