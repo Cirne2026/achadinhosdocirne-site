@@ -166,14 +166,22 @@
     object-fit: contain; display: block;
   }
 
+  /* 26/11/2026: o botao ficava cada um numa altura, porque o nome do produto
+     tem de 1 a 5 linhas. Agora o corpo e uma coluna flex e a data + botao vao
+     sempre para o pe do card (margin-top:auto na data). O nome fica em 3 linhas
+     fixas (corta com reticencias; o nome inteiro fica no title), entao a
+     nota e a data tambem caem na mesma linha em todos os cards. */
   .oferta__corpo {
-    display: grid; align-content: start; gap: 8px;
+    display: flex; flex-direction: column; gap: 8px;
     padding: clamp(14px, 1.6vw, 20px);
   }
   .oferta__nome {
     font-family: var(--body); font-weight: 700;
     font-size: var(--t-base); line-height: 1.32; margin: 0;
     color: var(--ink);
+    display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+    min-height: calc(3 * 1.32em);
   }
   .oferta__nota {
     display: flex; align-items: center; gap: 6px;
@@ -181,10 +189,12 @@
   }
   .oferta__nota span { color: var(--ink-3); font-weight: 400; font-size: var(--t-xs); }
   .oferta__nota .icone { width: 15px; height: 15px; }
-  .oferta__data { margin: 0; font-size: var(--t-xs); color: var(--ink-3); }
+  /* margin-top:auto empurra a data (e o botao logo abaixo dela) para o pe do
+     card: com ou sem a linha da nota, os dois ficam na mesma altura. */
+  .oferta__data { margin: auto 0 0; font-size: var(--t-xs); color: var(--ink-3); }
 
   .oferta__botao {
-    justify-self: start; margin-top: 6px;
+    align-self: flex-start; margin-top: 6px;
     display: inline-flex; align-items: center; gap: 8px;
     padding: 11px 20px; border-radius: var(--r-pill);
     background: var(--accent); color: var(--on-accent);
@@ -298,8 +308,8 @@
 
   <section class="carrossel" aria-labelledby="tit-carrossel">
     <div class="carrossel__cabeca">
-      <p class="carrossel__conta" id="tit-carrossel">54 produtos &middot; do mais novo para o mais antigo</p>
-      <!-- validade: 60 dias; 10 fora por idade -->
+      <p class="carrossel__conta" id="tit-carrossel">53 produtos &middot; do mais novo para o mais antigo</p>
+      <!-- validade: 60 dias; 11 fora por idade -->
       <div class="carrossel__setas" id="setas">
         <button class="seta" type="button" id="ant" aria-label="Ver as ofertas anteriores" aria-controls="trilho">
           <svg aria-hidden="true"><use href="#i-ant"></use></svg>
@@ -314,7 +324,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/smartphone-motorola-edge-70-fusion-256gb-5g-12gb-ram-12gb-ram-boost-grafite-68-cam-dupla-50mp-13mp-selfie-32mp/magazineluiza/242558600/2946d025f3c8325027d7ba40f30f772b.jpg" alt="Smartphone Motorola Edge 70 Fusion 256GB 5G 12GB RAM +12GB RAM Boost Grafite 6,8&quot; Câm. Dupla 50MP+13MP + Selfie 32MP" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Smartphone Motorola Edge 70 Fusion 256GB 5G 12GB RAM +12GB RAM Boost Grafite 6,8&quot; Câm. Dupla 50MP+13MP + Selfie 32MP</h2>
+          <h2 class="oferta__nome" title="Smartphone Motorola Edge 70 Fusion 256GB 5G 12GB RAM +12GB RAM Boost Grafite 6,8&quot; Câm. Dupla 50MP+13MP + Selfie 32MP">Smartphone Motorola Edge 70 Fusion 256GB 5G 12GB RAM +12GB RAM Boost Grafite 6,8&quot; Câm. Dupla 50MP+13MP + Selfie 32MP</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 208 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 25/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/smartphone-motorola-edge-70-fusion-256gb-5g-12gb-ram-12gb-ram-boost-grafite-68-cam-dupla-50mp-13mp-selfie-32mp/p/242558600/te/m70f/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -326,7 +336,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/guarda-roupa-casal-madesa-monaco-3-portas-de-correr-com-espelho/madesamoveis/xl1093091e/763e13782c806503f4e9bcfbf749719e.jpeg" alt="Guarda Roupa Casal Madesa Mônaco 3 Portas de Correr com Espelho" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Guarda Roupa Casal Madesa Mônaco 3 Portas de Correr com Espelho</h2>
+          <h2 class="oferta__nome" title="Guarda Roupa Casal Madesa Mônaco 3 Portas de Correr com Espelho">Guarda Roupa Casal Madesa Mônaco 3 Portas de Correr com Espelho</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,3 <span>&middot; 3.232 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 24/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/guarda-roupa-casal-madesa-monaco-3-portas-de-correr-com-espelho/p/bcb00dg7hj/mo/guro/?seller_id=madesamoveis" target="_blank" rel="noopener">
@@ -338,7 +348,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/gravador-de-audio-e-video-zoom-q2n-4k/foto-centro/3855/d9ba7d729b5e8f0739355c899d33bc57.jpeg" alt="Gravador de áudio e vídeo zoom q2n-4k" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Gravador de áudio e vídeo zoom q2n-4k</h2>
+          <h2 class="oferta__nome" title="Gravador de áudio e vídeo zoom q2n-4k">Gravador de áudio e vídeo zoom q2n-4k</h2>
           
           <p class="oferta__data">Divulgado em 23/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/gravador-de-audio-e-video-zoom-q2n-4k/p/ea20bfccdk/ea/grvo/?seller_id=foto-centro" target="_blank" rel="noopener">
@@ -350,7 +360,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/freezer-horizontal-electrolux-cycle-defrost-1-porta-513l-inverter-hi550/magazineluiza/238824900/ff52816cc6ac59231e2a17bc9ec7ede1.jpg" alt="Freezer Horizontal Electrolux Cycle Defrost 1 Porta 513L Inverter HI550" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Freezer Horizontal Electrolux Cycle Defrost 1 Porta 513L Inverter HI550</h2>
+          <h2 class="oferta__nome" title="Freezer Horizontal Electrolux Cycle Defrost 1 Porta 513L Inverter HI550">Freezer Horizontal Electrolux Cycle Defrost 1 Porta 513L Inverter HI550</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 1.371 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 21/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/freezer-horizontal-electrolux-cycle-defrost-1-porta-513l-inverter-hi550/p/238824900/pi/frid/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -362,7 +372,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/armario-de-cozinha-completa-com-armario-e-balcao-229cm-emilly-madesa/madesamoveis/xlg2007009/1ce9467f45eb875fcbc5259fb96527b8.jpeg" alt="Armário de Cozinha Completa com Armário e Balcão 229cm Emilly Madesa" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Armário de Cozinha Completa com Armário e Balcão 229cm Emilly Madesa</h2>
+          <h2 class="oferta__nome" title="Armário de Cozinha Completa com Armário e Balcão 229cm Emilly Madesa">Armário de Cozinha Completa com Armário e Balcão 229cm Emilly Madesa</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,5 <span>&middot; 5.890 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 19/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/armario-de-cozinha-completa-com-armario-e-balcao-229cm-emilly-madesa/p/chk99b55ka/mo/moac/?seller_id=madesamoveis" target="_blank" rel="noopener">
@@ -374,7 +384,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/tanquinho-de-lavar-roupas-colormaq-15kg-lcs15/magazineluiza/241479100/c3c04f047a09e011b62119018f59c841.jpg" alt="Tanquinho de Lavar Roupas Colormaq 15kg LCS15" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Tanquinho de Lavar Roupas Colormaq 15kg LCS15</h2>
+          <h2 class="oferta__nome" title="Tanquinho de Lavar Roupas Colormaq 15kg LCS15">Tanquinho de Lavar Roupas Colormaq 15kg LCS15</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,8 <span>&middot; 372 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 18/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/tanquinho-de-lavar-roupas-colormaq-15kg-lcs15/p/241479100/ed/tank/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -386,7 +396,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/tv-43-tcl-full-hd-qled-43s5k-google-tv-2-hdmi/magazineluiza/240424200/146a5942680d8e1dc657b4e4b7c7d6b3.jpg" alt="TV 43&quot; TCL Full HD QLED 43S5K Google TV 2 HDMI" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo oferta__selo--uma" role="img" aria-label="Imperdível da Black"><b>IMPERDÍVEL</b></span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">TV 43&quot; TCL Full HD QLED 43S5K Google TV 2 HDMI</h2>
+          <h2 class="oferta__nome" title="TV 43&quot; TCL Full HD QLED 43S5K Google TV 2 HDMI">TV 43&quot; TCL Full HD QLED 43S5K Google TV 2 HDMI</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,8 <span>&middot; 12.529 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 17/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/tv-43-tcl-full-hd-qled-43s5k-google-tv-2-hdmi/p/240424200/et/tves/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -398,7 +408,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/panela-de-pressao-eletrica-electrolux-5l-inox-1000w-experience-rita-lobo-pcc15/magazineluiza/237895300/d6adc39dc7fae959a7d4f3f26658f6a9.jpg" alt="Panela de Pressão Elétrica Electrolux 5L Inox 1000W Experience Rita Lobo PCC15" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo oferta__selo--uma" role="img" aria-label="Imperdível da Black"><b>IMPERDÍVEL</b></span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Panela de Pressão Elétrica Electrolux 5L Inox 1000W Experience Rita Lobo PCC15</h2>
+          <h2 class="oferta__nome" title="Panela de Pressão Elétrica Electrolux 5L Inox 1000W Experience Rita Lobo PCC15">Panela de Pressão Elétrica Electrolux 5L Inox 1000W Experience Rita Lobo PCC15</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 1.544 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 16/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/panela-de-pressao-eletrica-electrolux-5l-inox-1000w-experience-rita-lobo-pcc15/p/237895300/ep/eppe/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -410,7 +420,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/quadriciclo-eletrico-infantil-passeio-com-aro-de-protecao-haste-direcionavel-som-e-luz-brinq-kids/brinquei/f12626/69f28514829b3df31d20d583a6c17108.jpeg" alt="Quadriciclo Eletrico Infantil Passeio com Aro de Proteção Haste Direcionavel Som e Luz" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Quadriciclo Eletrico Infantil Passeio com Aro de Proteção Haste Direcionavel Som e Luz</h2>
+          <h2 class="oferta__nome" title="Quadriciclo Eletrico Infantil Passeio com Aro de Proteção Haste Direcionavel Som e Luz">Quadriciclo Eletrico Infantil Passeio com Aro de Proteção Haste Direcionavel Som e Luz</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,1 <span>&middot; 254 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 16/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/quadriciclo-eletrico-infantil-passeio-com-aro-de-protecao-haste-direcionavel-som-e-luz-brinq-kids/p/ec5j7jkde9/br/btri/?seller_id=brinquei" target="_blank" rel="noopener">
@@ -422,7 +432,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/apple-iphone-17e-256gb-preto-61-48mp-ios-5g/magazineluiza/241439100/d47e42f85c655788207ddf9561de6d71.jpg" alt="Apple iPhone 17e 256GB Preto 6,1&quot; 48MP iOS 5G" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo oferta__selo--uma" role="img" aria-label="Imperdível da Black"><b>IMPERDÍVEL</b></span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Apple iPhone 17e 256GB Preto 6,1&quot; 48MP iOS 5G</h2>
+          <h2 class="oferta__nome" title="Apple iPhone 17e 256GB Preto 6,1&quot; 48MP iOS 5G">Apple iPhone 17e 256GB Preto 6,1&quot; 48MP iOS 5G</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 410 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 16/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/apple-iphone-17e-256gb-preto-61-48mp-ios-5g/p/241439100/te/i17e/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -434,7 +444,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/multimidia-7-polegadas-android-premium-e-tech-2gb-32gb-camera-de-re/carrosomshop/798039p/4c3dee6519d2f7184d2683616a9625fa.jpeg" alt="Multimídia 7&quot; Polegadas Android Premium E-Tech 2GB + 32GB + Câmera de Ré" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Multimídia 7&quot; Polegadas Android Premium E-Tech 2GB + 32GB + Câmera de Ré</h2>
+          <h2 class="oferta__nome" title="Multimídia 7&quot; Polegadas Android Premium E-Tech 2GB + 32GB + Câmera de Ré">Multimídia 7&quot; Polegadas Android Premium E-Tech 2GB + 32GB + Câmera de Ré</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,5 <span>&middot; 38 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 12/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/multimidia-7-polegadas-android-premium-e-tech-2gb-32gb-camera-de-re/p/ef8b60k9dh/au/aucm/?seller_id=carrosomshop" target="_blank" rel="noopener">
@@ -446,7 +456,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/lava-loucas-10-servicos-brastemp-branca-com-ciclo-pesado-blf10bb/whirlpool/326020170/383959f90e8e267338e2fd86ff350902.jpg" alt="Lava-Louças 10 Serviços Brastemp Branca com Ciclo Pesado - BLF10BB" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Lava-Louças 10 Serviços Brastemp Branca com Ciclo Pesado - BLF10BB</h2>
+          <h2 class="oferta__nome" title="Lava-Louças 10 Serviços Brastemp Branca com Ciclo Pesado - BLF10BB">Lava-Louças 10 Serviços Brastemp Branca com Ciclo Pesado - BLF10BB</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,5 <span>&middot; 392 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 10/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/lava-loucas-10-servicos-brastemp-branca-com-ciclo-pesado-blf10bb/p/gg5gbjaj1h/ed/l10s/?seller_id=whirlpool" target="_blank" rel="noopener">
@@ -458,7 +468,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/ar-condicionado-split-agratto-inverter-18-000-btus-frio-lcst18f-02i/magazineluiza/237220300/fafb6b55f9c8bb32d6ba5571b44712bc.jpg" alt="Ar-condicionado Split Agratto Inverter 18.000 BTUs Frio LCST18F-02I" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Ar-condicionado Split Agratto Inverter 18.000 BTUs Frio LCST18F-02I</h2>
+          <h2 class="oferta__nome" title="Ar-condicionado Split Agratto Inverter 18.000 BTUs Frio LCST18F-02I">Ar-condicionado Split Agratto Inverter 18.000 BTUs Frio LCST18F-02I</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,7 <span>&middot; 166 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 09/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/ar-condicionado-split-agratto-inverter-18-000-btus-frio-lcst18f-02i/p/237220300/ar/aciv/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -470,7 +480,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/geladeira-inteligente-b-smart-3-portas-french-door-frost-free-630l-cor-black-inox-brastemp-bro88ae/whirlpool/326199398/80b8c97c1129b36c89d9e5cd9fd54d69.jpeg" alt="Geladeira Inteligente B= Smart 3 Portas French Door Frost Free 630L cor Black Inox Brastemp - BRO88AE" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo oferta__selo--uma" role="img" aria-label="Imperdível da Black"><b>IMPERDÍVEL</b></span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Geladeira Inteligente B= Smart 3 Portas French Door Frost Free 630L cor Black Inox Brastemp - BRO88AE</h2>
+          <h2 class="oferta__nome" title="Geladeira Inteligente B= Smart 3 Portas French Door Frost Free 630L cor Black Inox Brastemp - BRO88AE">Geladeira Inteligente B= Smart 3 Portas French Door Frost Free 630L cor Black Inox Brastemp - BRO88AE</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 5 <span>&middot; 9 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 08/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/geladeira-inteligente-b-smart-3-portas-french-door-frost-free-630l-cor-black-inox-brastemp-bro88ae/p/bg8aaj6c58/ed/refr/?seller_id=whirlpool" target="_blank" rel="noopener">
@@ -482,7 +492,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/colchao-casal-umaflex-de-molas-ensacadas-33x138x188cm-new-prada/magazineluiza/238970500/ddd167994c393ac9870629b4c2c71d1f.jpg" alt="Colchão Casal Umaflex de Molas Ensacadas 33x138x188cm New Prada" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Colchão Casal Umaflex de Molas Ensacadas 33x138x188cm New Prada</h2>
+          <h2 class="oferta__nome" title="Colchão Casal Umaflex de Molas Ensacadas 33x138x188cm New Prada">Colchão Casal Umaflex de Molas Ensacadas 33x138x188cm New Prada</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,6 <span>&middot; 146 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 07/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/colchao-casal-umaflex-de-molas-ensacadas-33x138x188cm-new-prada/p/238970500/co/ccbc/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -494,7 +504,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/mountain-bike-aro-29-track-bikes-tks-29-pn-aluminio-freio-a-disco-21-marchas/magazineluiza/122223000/f2883b04f4c489c376d2f1db5ef7ca0b.jpg" alt="Mountain Bike Aro 29 Track Bikes TKS 29 PN" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Mountain Bike Aro 29 Track Bikes TKS 29 PN</h2>
+          <h2 class="oferta__nome" title="Mountain Bike Aro 29 Track Bikes TKS 29 PN">Mountain Bike Aro 29 Track Bikes TKS 29 PN</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,7 <span>&middot; 87 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 07/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/mountain-bike-aro-29-track-bikes-tks-29-pn-aluminio-freio-a-disco-21-marchas/p/122223000/es/elbk/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -506,7 +516,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/sofa-3-lugares-retratil-reclinavel-veludo-barsa-gralha-azul/magazineluiza/242193600/008551d9b5fafefe903aa0da69df83cd.jpg" alt="Sofá 3 Lugares Retrátil Reclinável Veludo Barsa Gralha Azul" loading="lazy" decoding="async" width="600" height="600"><span class="oferta__selo" role="img" aria-label="Oferta Black"><b>OFERTA</b> BLACK</span></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Sofá 3 Lugares Retrátil Reclinável Veludo Barsa Gralha Azul</h2>
+          <h2 class="oferta__nome" title="Sofá 3 Lugares Retrátil Reclinável Veludo Barsa Gralha Azul">Sofá 3 Lugares Retrátil Reclinável Veludo Barsa Gralha Azul</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,8 <span>&middot; 5.574 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 06/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/sofa-3-lugares-retratil-reclinavel-veludo-barsa-gralha-azul/p/242193600/mo/msof/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -518,7 +528,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/smartwatch-huawei-watch-fit-5-gps-amoled-182-spo2-5atm-bluetooth/casbelycomercio/huaweiwatchfit5preto/619dcba8a9448ecf9cc9c25421b44ade.jpeg" alt="Smartwatch HUAWEI Watch Fit 5 GPS AMOLED 1,82 SpO2 5ATM Bluetooth" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Smartwatch HUAWEI Watch Fit 5 GPS AMOLED 1,82 SpO2 5ATM Bluetooth</h2>
+          <h2 class="oferta__nome" title="Smartwatch HUAWEI Watch Fit 5 GPS AMOLED 1,82 SpO2 5ATM Bluetooth">Smartwatch HUAWEI Watch Fit 5 GPS AMOLED 1,82 SpO2 5ATM Bluetooth</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 40 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 04/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/smartwatch-huawei-watch-fit-5-gps-amoled-182-spo2-5atm-bluetooth/p/chb2f61223/te/smtw/?seller_id=casbelycomercio" target="_blank" rel="noopener">
@@ -530,7 +540,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/batedeira-planetaria-oster-preta-850w-12-velocidades-tigela-inox-obat641/magazineluiza/237999200/f28e2b231d27abf1541245cf4a9b70ea.jpg" alt="Batedeira Planetária Oster Preta 850W" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Batedeira Planetária Oster Preta 850W</h2>
+          <h2 class="oferta__nome" title="Batedeira Planetária Oster Preta 850W">Batedeira Planetária Oster Preta 850W</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,7 <span>&middot; 3.074 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 04/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/batedeira-planetaria-oster-preta-850w-12-velocidades-tigela-inox-obat641/p/237999200/ep/bapl/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -542,7 +552,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/quadriciclo-passeio-eletrico-infantil-haste-direcionavel-bateria-6v-brinq-kids/brinquei/bq052/f67baeb3b5ef41dcef3e2914fcfde61b.jpeg" alt="Quadriciclo Passeio Elétrico Infantil Haste Direcionável Bateria 6V" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Quadriciclo Passeio Elétrico Infantil Haste Direcionável Bateria 6V</h2>
+          <h2 class="oferta__nome" title="Quadriciclo Passeio Elétrico Infantil Haste Direcionável Bateria 6V">Quadriciclo Passeio Elétrico Infantil Haste Direcionável Bateria 6V</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,3 <span>&middot; 224 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 04/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/quadriciclo-passeio-eletrico-infantil-haste-direcionavel-bateria-6v-brinq-kids/p/db7ekb7gkh/br/qdce/?seller_id=brinquei" target="_blank" rel="noopener">
@@ -554,7 +564,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/guarda-roupa-casal-com-espelho-6-gavetas-6-portas-demobile-paris-ii/magazineluiza/240300200/0c033f28338e1d0123e6397a29dc472b.jpg" alt="Guarda-roupa Casal com Espelho 6 Gavetas 6 Portas Demobile Paris II" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Guarda-roupa Casal com Espelho 6 Gavetas 6 Portas Demobile Paris II</h2>
+          <h2 class="oferta__nome" title="Guarda-roupa Casal com Espelho 6 Gavetas 6 Portas Demobile Paris II">Guarda-roupa Casal com Espelho 6 Gavetas 6 Portas Demobile Paris II</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,5 <span>&middot; 9.822 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 03/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/guarda-roupa-casal-com-espelho-6-gavetas-6-portas-demobile-paris-ii/p/240300200/mo/guro/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -566,7 +576,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/guarda-roupa-casal-com-espelho-6-portas-4-gavetas-araplac-braga/magazineluiza/237759800/5f865398547b871c025b3dee300086ca.jpg" alt="Guarda-roupa Casal com Espelho 6 Portas 4 Gavetas Araplac Braga" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Guarda-roupa Casal com Espelho 6 Portas 4 Gavetas Araplac Braga</h2>
+          <h2 class="oferta__nome" title="Guarda-roupa Casal com Espelho 6 Portas 4 Gavetas Araplac Braga">Guarda-roupa Casal com Espelho 6 Portas 4 Gavetas Araplac Braga</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,6 <span>&middot; 21.684 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 03/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/guarda-roupa-casal-com-espelho-6-portas-4-gavetas-araplac-braga/p/237759800/mo/guro/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -578,7 +588,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/oculos-inteligente-de-sol-4k-full-hd-com-camera-e-ia-kit-3-lentes-bluetooth-wifi-e-traducao-microwear/variedadesinfinity/ocsm002/2bfcdc59189c0b527347e83edfee7fbf.jpeg" alt="Óculos Inteligente de Sol 4K Full HD com Câmera e IA, Kit 3 Lentes, Bluetooth, Wifi e Tradução" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Óculos Inteligente de Sol 4K Full HD com Câmera e IA, Kit 3 Lentes, Bluetooth, Wifi e Tradução</h2>
+          <h2 class="oferta__nome" title="Óculos Inteligente de Sol 4K Full HD com Câmera e IA, Kit 3 Lentes, Bluetooth, Wifi e Tradução">Óculos Inteligente de Sol 4K Full HD com Câmera e IA, Kit 3 Lentes, Bluetooth, Wifi e Tradução</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 5 <span>&middot; 2 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 02/11/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/oculos-inteligente-de-sol-4k-full-hd-com-camera-e-ia-kit-3-lentes-bluetooth-wifi-e-traducao-microwear/p/kd064308ja/te/ocli/?seller_id=variedadesinfinity" target="_blank" rel="noopener">
@@ -590,7 +600,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/bicicleta-eletrica-v8-ultra-1000w-com-seguro-roubo-e-furto-autonomia-de-50km-pneu-fat-preto-bikelete/bikepop/nd239901/58d624086f8c9b16a8796b5b91240256.jpeg" alt="Bicicleta Elétrica V8 Ultra 1000W Com Seguro Roubo e Furto Autonomia de 50km Pneu FAT Preto" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Bicicleta Elétrica V8 Ultra 1000W Com Seguro Roubo e Furto Autonomia de 50km Pneu FAT Preto</h2>
+          <h2 class="oferta__nome" title="Bicicleta Elétrica V8 Ultra 1000W Com Seguro Roubo e Furto Autonomia de 50km Pneu FAT Preto">Bicicleta Elétrica V8 Ultra 1000W Com Seguro Roubo e Furto Autonomia de 50km Pneu FAT Preto</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,6 <span>&middot; 28 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 30/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/bicicleta-eletrica-v8-ultra-1000w-com-seguro-roubo-e-furto-autonomia-de-50km-pneu-fat-preto-bikelete/p/bhj6720g79/es/btbe/?seller_id=bikepop" target="_blank" rel="noopener">
@@ -602,7 +612,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/apple-iphone-17-256gb-preto-63-48mp-ios-5g/magazineluiza/241268000/a8b1a7e0e6cc3d4dd7053ab640ccbf47.jpg" alt="Apple iPhone 17 256GB Preto 6,3&quot; 48MP iOS 5G" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Apple iPhone 17 256GB Preto 6,3&quot; 48MP iOS 5G</h2>
+          <h2 class="oferta__nome" title="Apple iPhone 17 256GB Preto 6,3&quot; 48MP iOS 5G">Apple iPhone 17 256GB Preto 6,3&quot; 48MP iOS 5G</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,9 <span>&middot; 1.356 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 30/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/apple-iphone-17-256gb-preto-63-48mp-ios-5g/p/241268000/te/ip17/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -614,7 +624,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/cadeira-gamer-otello-preto-e-vermelho/magazineluiza/237019000/60d31324c924663a352ef8a76b28087b.jpg" alt="Cadeira Gamer Otello Preto e Vermelho" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Cadeira Gamer Otello Preto e Vermelho</h2>
+          <h2 class="oferta__nome" title="Cadeira Gamer Otello Preto e Vermelho">Cadeira Gamer Otello Preto e Vermelho</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,6 <span>&middot; 10.581 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 29/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/cadeira-gamer-otello-preto-e-vermelho/p/237019000/mo/mecg/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -626,7 +636,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/tenis-couro-adidas-vl-court-3-0-feminino/netshoes/fb9-3629-846-38/0ba9a1e3017eacf72f0f232e7fe7f5ac.jpeg" alt="Tênis Couro Adidas VL Court 3.0 Feminino" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Tênis Couro Adidas VL Court 3.0 Feminino</h2>
+          <h2 class="oferta__nome" title="Tênis Couro Adidas VL Court 3.0 Feminino">Tênis Couro Adidas VL Court 3.0 Feminino</h2>
           
           <p class="oferta__data">Divulgado em 28/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/tenis-couro-adidas-vl-court-3-0-feminino/p/cdb6f8db8g/md/tnml/?seller_id=netshoes" target="_blank" rel="noopener">
@@ -638,7 +648,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/ar-condicionado-split-9-000btus-gree-inverter-quente-e-frio-gwh09ata-d6dna2c/magazineluiza/240121700/e33286e178e299d472e18d7e07a55585.jpg" alt="Ar-condicionado Split 9.000BTUs Gree Inverter Quente e Frio GWH09ATA-D6DNA2C" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Ar-condicionado Split 9.000BTUs Gree Inverter Quente e Frio GWH09ATA-D6DNA2C</h2>
+          <h2 class="oferta__nome" title="Ar-condicionado Split 9.000BTUs Gree Inverter Quente e Frio GWH09ATA-D6DNA2C">Ar-condicionado Split 9.000BTUs Gree Inverter Quente e Frio GWH09ATA-D6DNA2C</h2>
           
           <p class="oferta__data">Divulgado em 27/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/ar-condicionado-split-9-000btus-gree-inverter-quente-e-frio-gwh09ata-d6dna2c/p/240121700/ar/aciv/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -650,7 +660,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/escova-secadora-rotativa-diamond-rotating-conair/polishop/135344/f70f6b468a6347b519a966d0ab34cb3e.jpeg" alt="Escova Secadora Rotativa Diamond Rotating Conair" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Escova Secadora Rotativa Diamond Rotating Conair</h2>
+          <h2 class="oferta__nome" title="Escova Secadora Rotativa Diamond Rotating Conair">Escova Secadora Rotativa Diamond Rotating Conair</h2>
           
           <p class="oferta__data">Divulgado em 26/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/escova-secadora-rotativa-diamond-rotating-conair/p/ca7ha38hh3/pf/esro/?seller_id=polishop" target="_blank" rel="noopener">
@@ -660,9 +670,9 @@
         </div>
       </li>
       <li class="oferta">
-        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/air-fryer-mondial-family-afn-40-bi-preto-4l-com-timer/magazineluiza/228887100/9f098f13262ee3dbefe5817ae85c179c.jpg" alt="Air Fryer Mondial Family AFN-40-BI Preto 4L com Timer" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/air-fryer-mondial-family-afn-40-bi-preto-4l-com-timer/magazineluiza/228887100/da09f9483064d06d539cc34650baab8c.jpg" alt="Air Fryer Mondial Family AFN-40-BI Preto 4L com Timer" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Air Fryer Mondial Family AFN-40-BI Preto 4L com Timer</h2>
+          <h2 class="oferta__nome" title="Air Fryer Mondial Family AFN-40-BI Preto 4L com Timer">Air Fryer Mondial Family AFN-40-BI Preto 4L com Timer</h2>
           
           <p class="oferta__data">Divulgado em 26/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/air-fryer-mondial-family-afn-40-bi-preto-4l-com-timer/p/228887100/ep/efso/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -674,7 +684,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/quadriciclo-infantil-a-pedal-vermelho-e-azul-spider-maral-com-empurrador/magazineluiza/224595200/97ee1fac66247efa8467a9d5517b281b.jpg" alt="Quadriciclo Infantil a Pedal Vermelho e Azul" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Quadriciclo Infantil a Pedal Vermelho e Azul</h2>
+          <h2 class="oferta__nome" title="Quadriciclo Infantil a Pedal Vermelho e Azul">Quadriciclo Infantil a Pedal Vermelho e Azul</h2>
           
           <p class="oferta__data">Divulgado em 26/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/quadriciclo-infantil-a-pedal-vermelho-e-azul-spider-maral-com-empurrador/p/224595200/br/qdce/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -686,7 +696,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/smart-tv-50-tcl-4k-uhd-qled-50p7l-google-tv-2026/magazineluiza/241688900/a4fb4aa65035c97362cae66c4880d9fc.jpg" alt="Smart TV 50&quot; TCL 4K UHD QLED 50P7L Google TV 2026" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Smart TV 50&quot; TCL 4K UHD QLED 50P7L Google TV 2026</h2>
+          <h2 class="oferta__nome" title="Smart TV 50&quot; TCL 4K UHD QLED 50P7L Google TV 2026">Smart TV 50&quot; TCL 4K UHD QLED 50P7L Google TV 2026</h2>
           
           <p class="oferta__data">Divulgado em 23/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/smart-tv-50-tcl-4k-uhd-qled-50p7l-google-tv-2026/p/241688900/et/elit/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -698,7 +708,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/panela-de-pressao-eletrica-6l-electrolux-pcc20-4340ajbr483-rita-lobo/magazineluiza/023301400/1d51fc544b75cf5b1107a87e7e2c0b2e.jpg" alt="Panela de Pressão Elétrica 6L Electrolux PCC20 4340AJBR483 Rita Lobo" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Panela de Pressão Elétrica 6L Electrolux PCC20 4340AJBR483 Rita Lobo</h2>
+          <h2 class="oferta__nome" title="Panela de Pressão Elétrica 6L Electrolux PCC20 4340AJBR483 Rita Lobo">Panela de Pressão Elétrica 6L Electrolux PCC20 4340AJBR483 Rita Lobo</h2>
           
           <p class="oferta__data">Divulgado em 22/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/panela-de-pressao-eletrica-6l-electrolux-pcc20-4340ajbr483-rita-lobo/p/023301400/ep/eppe/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -710,7 +720,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/mochila-pesca-lugb-15-back-pack-xl-com-4-estojos-shimano/armazemlestecomercialeferragensl/12097/d262322c93547eaf41d67d0e6c3db9b3.jpeg" alt="Mochila pesca lugb-15  back pack xl com 4 estojos shimano" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Mochila pesca lugb-15  back pack xl com 4 estojos shimano</h2>
+          <h2 class="oferta__nome" title="Mochila pesca lugb-15  back pack xl com 4 estojos shimano">Mochila pesca lugb-15  back pack xl com 4 estojos shimano</h2>
           
           <p class="oferta__data">Divulgado em 21/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/mochila-pesca-lugb-15-back-pack-xl-com-4-estojos-shimano/p/jebd01f2a4/md/pmch/?seller_id=armazemlestecomercialeferragensl" target="_blank" rel="noopener">
@@ -720,9 +730,9 @@
         </div>
       </li>
       <li class="oferta">
-        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/cadeira-escritorio-ergonomica-kazalinda-mesh-120kg-kazalinda/inovarmetais1/4191/739e3d7c32f28730b14d2a1d73f0a611.jpeg" alt="Cadeira Escritório Ergonômica Kazalinda Mesh 120kg Kazalinda" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/cadeira-escritorio-ergonomica-kazalinda-mesh-120kg-kazalinda/inovarmetais1/4191/1563564ee0871c9d2686bb8d36f28d0e.jpeg" alt="Cadeira Escritório Ergonômica Kazalinda Mesh 120kg Kazalinda" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Cadeira Escritório Ergonômica Kazalinda Mesh 120kg Kazalinda</h2>
+          <h2 class="oferta__nome" title="Cadeira Escritório Ergonômica Kazalinda Mesh 120kg Kazalinda">Cadeira Escritório Ergonômica Kazalinda Mesh 120kg Kazalinda</h2>
           
           <p class="oferta__data">Divulgado em 21/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/cadeira-escritorio-ergonomica-kazalinda-mesh-120kg-kazalinda/p/cb7088h1de/mo/moec/?seller_id=inovarmetais1" target="_blank" rel="noopener">
@@ -734,7 +744,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/frigobar-mondial-120l-branco-e-cinza-com-gaveta-fgb-01-w120/magazineluiza/238893600/3cde8ab31d0a26b85770fc23188a6e0c.jpg" alt="Frigobar Mondial 120L Branco e Cinza com Gaveta FGB-01-W120" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Frigobar Mondial 120L Branco e Cinza com Gaveta FGB-01-W120</h2>
+          <h2 class="oferta__nome" title="Frigobar Mondial 120L Branco e Cinza com Gaveta FGB-01-W120">Frigobar Mondial 120L Branco e Cinza com Gaveta FGB-01-W120</h2>
           
           <p class="oferta__data">Divulgado em 20/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/frigobar-mondial-120l-branco-e-cinza-com-gaveta-fgb-01-w120/p/238893600/ed/rcom/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -746,7 +756,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/micro-ondas-mondial-21-litros-mo-01-21-e-cinza-espelhado/engageeletro/7101/2bd76339d38f7d4cc3e8198b80267c54.jpg" alt="Micro-ondas Mondial 21 Litros Mo-01-21-E Cinza Espelhado" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Micro-ondas Mondial 21 Litros Mo-01-21-E Cinza Espelhado</h2>
+          <h2 class="oferta__nome" title="Micro-ondas Mondial 21 Litros Mo-01-21-E Cinza Espelhado">Micro-ondas Mondial 21 Litros Mo-01-21-E Cinza Espelhado</h2>
           
           <p class="oferta__data">Divulgado em 20/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/micro-ondas-mondial-21-litros-mo-01-21-e-cinza-espelhado/p/hk83kcg2cc/ed/mond/?seller_id=engageeletro" target="_blank" rel="noopener">
@@ -758,7 +768,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/smartphone-samsung-galaxy-a17-4g-128gb-4gb-ram-preto/temdetudo1001/699-1/9c8eff3e3a94ccd2a61e37ebfaedbada.jpg" alt="Smartphone samsung galaxy a17 4g 128gb 4gb ram preto" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Smartphone samsung galaxy a17 4g 128gb 4gb ram preto</h2>
+          <h2 class="oferta__nome" title="Smartphone samsung galaxy a17 4g 128gb 4gb ram preto">Smartphone samsung galaxy a17 4g 128gb 4gb ram preto</h2>
           
           <p class="oferta__data">Divulgado em 19/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/smartphone-samsung-galaxy-a17-4g-128gb-4gb-ram-preto/p/bj7hbakabb/te/ga17/?seller_id=temdetudo1001" target="_blank" rel="noopener">
@@ -770,7 +780,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/purificador-de-agua-electrolux-pe11b/lojadonatereza/60d14f741b1e11edbafb4201ac185019/b174f207b58d8668e033eef503b25c48.jpg" alt="Purificador de Água Electrolux - PE11B" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Purificador de Água Electrolux - PE11B</h2>
+          <h2 class="oferta__nome" title="Purificador de Água Electrolux - PE11B">Purificador de Água Electrolux - PE11B</h2>
           
           <p class="oferta__data">Divulgado em 18/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/purificador-de-agua-electrolux-pe11b/p/ea05cca5h2/ep/purf/" target="_blank" rel="noopener">
@@ -782,7 +792,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/celular-samsung-galaxy-a07-128gb-preto-4gb-ram-tela-67-cam-dupla-selfie-8mp/magazineluiza/240466500/7d2f182f0b146ac2dc3d08bc3c1743f3.jpg" alt="Celular Samsung Galaxy A07 128GB Preto 4GB RAM Tela 6,7&quot; Câm. Dupla + Selfie 8MP" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Celular Samsung Galaxy A07 128GB Preto 4GB RAM Tela 6,7&quot; Câm. Dupla + Selfie 8MP</h2>
+          <h2 class="oferta__nome" title="Celular Samsung Galaxy A07 128GB Preto 4GB RAM Tela 6,7&quot; Câm. Dupla + Selfie 8MP">Celular Samsung Galaxy A07 128GB Preto 4GB RAM Tela 6,7&quot; Câm. Dupla + Selfie 8MP</h2>
           
           <p class="oferta__data">Divulgado em 16/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/celular-samsung-galaxy-a07-128gb-preto-4gb-ram-tela-67-cam-dupla-selfie-8mp/p/240466500/te/ga07/" target="_blank" rel="noopener">
@@ -794,7 +804,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/mini-moto-eletrica-esportiva-infantil-com-luz-led-som-motor-brinq-kids/brinquei/f12404-1/8431c92818ffbcbd4cb6ab243d97b10c.jpeg" alt="Mini Moto Elétrica Esportiva Infantil com Luz Led Som Motor" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Mini Moto Elétrica Esportiva Infantil com Luz Led Som Motor</h2>
+          <h2 class="oferta__nome" title="Mini Moto Elétrica Esportiva Infantil com Luz Led Som Motor">Mini Moto Elétrica Esportiva Infantil com Luz Led Som Motor</h2>
           
           <p class="oferta__data">Divulgado em 16/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/mini-moto-eletrica-esportiva-infantil-com-luz-led-som-motor-brinq-kids/p/eeaj0g8ech/br/bmel/?seller_id=brinquei" target="_blank" rel="noopener">
@@ -806,7 +816,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/panela-de-pressao-eletrica-digital-mondial-5l-900w-master-cooker-red-pe-39/magazineluiza/236680500/8c2b10615c901531ec242b4a48e43443.jpg" alt="Panela de Pressão Elétrica Digital Mondial" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Panela de Pressão Elétrica Digital Mondial</h2>
+          <h2 class="oferta__nome" title="Panela de Pressão Elétrica Digital Mondial">Panela de Pressão Elétrica Digital Mondial</h2>
           
           <p class="oferta__data">Divulgado em 16/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/panela-de-pressao-eletrica-digital-mondial-5l-900w-master-cooker-red-pe-39/p/236680500/ep/eppe/?seller_id=magazineluiza" target="_blank" rel="noopener">
@@ -818,7 +828,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/tenis-adidas-vl-court-3-0-feminino/netshoes/fba-4136-028-37/da161cf9b99e91d6181a36cb612a7431.jpeg" alt="Tênis Adidas VL Court 3.0 Feminino" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Tênis Adidas VL Court 3.0 Feminino</h2>
+          <h2 class="oferta__nome" title="Tênis Adidas VL Court 3.0 Feminino">Tênis Adidas VL Court 3.0 Feminino</h2>
           
           <p class="oferta__data">Divulgado em 15/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/tenis-adidas-vl-court-3-0-feminino/p/fg41541861/md/tens/" target="_blank" rel="noopener">
@@ -830,7 +840,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/carro-jipe-eletrico-bateria-12v-infantil-trilha-musica-luz-controle-remoto-brinq-kids/brinquei/bq043/2a5f06be74ea22cc03e0872260aa1909.jpeg" alt="Carro Jipe Elétrico Bateria 12v Infantil Trilha Música Luz Controle Remoto" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Carro Jipe Elétrico Bateria 12v Infantil Trilha Música Luz Controle Remoto</h2>
+          <h2 class="oferta__nome" title="Carro Jipe Elétrico Bateria 12v Infantil Trilha Música Luz Controle Remoto">Carro Jipe Elétrico Bateria 12v Infantil Trilha Música Luz Controle Remoto</h2>
           
           <p class="oferta__data">Divulgado em 15/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/carro-jipe-eletrico-bateria-12v-infantil-trilha-musica-luz-controle-remoto-brinq-kids/p/hbc08ajke8/br/mnve/?seller_id=brinquei" target="_blank" rel="noopener">
@@ -842,7 +852,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/maquina-de-lavar-electrolux-15kg-branca-essential-care-com-cesto-inox-e-jet-clean-led15/electrolux/310118596/c48223c565b734aa2e6b2a42bd7b2dde.jpeg" alt="Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)</h2>
+          <h2 class="oferta__nome" title="Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)">Máquina de Lavar Electrolux 15kg Branca Essential Care com Cesto Inox e Jet&amp;Clean (LED15)</h2>
           <p class="oferta__nota"><svg class="icone" aria-hidden="true"><use href="#i-estrela"></use></svg> 4,8 <span>&middot; 10.544 avaliações na loja</span></p>
           <p class="oferta__data">Divulgado em 14/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/maquina-de-lavar-electrolux-15kg-branca-essential-care-com-cesto-inox-e-jet-clean-led15/p/kee9b751fb/ed/lava/?seller_id=electrolux" target="_blank" rel="noopener">
@@ -854,7 +864,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/celular-samsung-galaxy-a57-256gb-5g-8gb-ram-lilas-67-cam-tripla-selfie-12mp/magazineluiza/241493400/f3179522c2b65ad662a8edc2641b88f3.jpg" alt="Celular Samsung Galaxy A57 256GB 5G 8GB RAM Lilás 6,7&quot; Câm Tripla + Selfie 12MP" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Celular Samsung Galaxy A57 256GB 5G 8GB RAM Lilás 6,7&quot; Câm Tripla + Selfie 12MP</h2>
+          <h2 class="oferta__nome" title="Celular Samsung Galaxy A57 256GB 5G 8GB RAM Lilás 6,7&quot; Câm Tripla + Selfie 12MP">Celular Samsung Galaxy A57 256GB 5G 8GB RAM Lilás 6,7&quot; Câm Tripla + Selfie 12MP</h2>
           
           <p class="oferta__data">Divulgado em 13/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/celular-samsung-galaxy-a57-256gb-5g-8gb-ram-lilas-67-cam-tripla-selfie-12mp/p/241493400/te/ga57/" target="_blank" rel="noopener">
@@ -866,7 +876,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/mini-carro-eletrico-infantil-12v-gtxp-controle-remoto-luzes-som-importway/palaciodasferramentas/86678/4d0f38fa54801353e71403b3b559d39e.jpeg" alt="Mini Carro Elétrico Infantil 12V GTXP Controle Remoto Luzes Som IMPORTWAY" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Mini Carro Elétrico Infantil 12V GTXP Controle Remoto Luzes Som IMPORTWAY</h2>
+          <h2 class="oferta__nome" title="Mini Carro Elétrico Infantil 12V GTXP Controle Remoto Luzes Som IMPORTWAY">Mini Carro Elétrico Infantil 12V GTXP Controle Remoto Luzes Som IMPORTWAY</h2>
           
           <p class="oferta__data">Divulgado em 12/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/mini-carro-eletrico-infantil-12v-gtxp-controle-remoto-luzes-som-importway/p/ebh52cc0f2/br/mnve/?seller_id=palaciodasferramentas" target="_blank" rel="noopener">
@@ -878,7 +888,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/carro-eletrico-infantil-veiculo-com-luz-musica-bateria-12v-e-controle-remoto-brinq-kids/brinquei/zip11512r/b897c10f25763d38c65fef5cd28387fd.jpeg" alt="Carro Eletrico Infantil Veículo com Luz Música Bateria 12v e Controle Remoto" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Carro Eletrico Infantil Veículo com Luz Música Bateria 12v e Controle Remoto</h2>
+          <h2 class="oferta__nome" title="Carro Eletrico Infantil Veículo com Luz Música Bateria 12v e Controle Remoto">Carro Eletrico Infantil Veículo com Luz Música Bateria 12v e Controle Remoto</h2>
           
           <p class="oferta__data">Divulgado em 10/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/carro-eletrico-infantil-veiculo-com-luz-musica-bateria-12v-e-controle-remoto-brinq-kids/p/ha1kk1a033/br/mino/" target="_blank" rel="noopener">
@@ -888,9 +898,9 @@
         </div>
       </li>
       <li class="oferta">
-        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/air-fryer-mondial-forno-oven-afon-12l-bi-preto-e-inox-12l/magazineluiza/237219400/508e5917971a923ec7ae78025e2247c2.jpg" alt="Air Fryer Mondial Forno Oven AFON-12L-BI Preto e Inox 12L" loading="lazy" decoding="async" width="600" height="600"></div>
+        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/air-fryer-mondial-forno-oven-afon-12l-bi-preto-e-inox-12l/magazineluiza/237219400/e605632413329614028524178f39fcfb.jpg" alt="Air Fryer Mondial Forno Oven AFON-12L-BI Preto e Inox 12L" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Air Fryer Mondial Forno Oven AFON-12L-BI Preto e Inox 12L</h2>
+          <h2 class="oferta__nome" title="Air Fryer Mondial Forno Oven AFON-12L-BI Preto e Inox 12L">Air Fryer Mondial Forno Oven AFON-12L-BI Preto e Inox 12L</h2>
           
           <p class="oferta__data">Divulgado em 09/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/air-fryer-mondial-forno-oven-afon-12l-bi-preto-e-inox-12l/p/237219400/ep/efso/" target="_blank" rel="noopener">
@@ -902,7 +912,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/triciclo-patinete-eletrico-250w-36v-brushless-20km-h-8pol-ate-120kg-azul-zelt/palaciodas-ferramentas/88447/e242a313935a04664104c53870508625.jpeg" alt="Triciclo Patinete Elétrico 250w 36V Brushless 20km/h 8Pol até 120kg Azul ZELT" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Triciclo Patinete Elétrico 250w 36V Brushless 20km/h 8Pol até 120kg Azul ZELT</h2>
+          <h2 class="oferta__nome" title="Triciclo Patinete Elétrico 250w 36V Brushless 20km/h 8Pol até 120kg Azul ZELT">Triciclo Patinete Elétrico 250w 36V Brushless 20km/h 8Pol até 120kg Azul ZELT</h2>
           
           <p class="oferta__data">Divulgado em 09/10/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/triciclo-patinete-eletrico-250w-36v-brushless-20km-h-8pol-ate-120kg-azul-zelt/p/fh7584jgdf/es/eptn/?seller_id=palaciodas-ferramentas" target="_blank" rel="noopener">
@@ -914,7 +924,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/carro-eletrico-infantil-jipe-bateria-12v-controle-remoto-musica-e-luz-de-led-brinq-kids/brinquei/p12489/71a76ba60d4de9b8d9a60aed56df2534.jpeg" alt="Carro Elétrico Infantil Jipe Bateria 12v Controle Remoto Música e Luz de Led" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Carro Elétrico Infantil Jipe Bateria 12v Controle Remoto Música e Luz de Led</h2>
+          <h2 class="oferta__nome" title="Carro Elétrico Infantil Jipe Bateria 12v Controle Remoto Música e Luz de Led">Carro Elétrico Infantil Jipe Bateria 12v Controle Remoto Música e Luz de Led</h2>
           
           <p class="oferta__data">Divulgado em 28/09/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/carro-eletrico-infantil-jipe-bateria-12v-controle-remoto-musica-e-luz-de-led-brinq-kids/p/afkjejf50h/br/mino/" target="_blank" rel="noopener">
@@ -926,7 +936,7 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/mini-quadriciclo-eletrico-6-volts-infantil-som-luz-e-musica-30-kilos-brinq-kids/brinquei/bq020/39da34531908b35cedd6e8014249dcbe.jpeg" alt="Mini Quadriciclo Elétrico 6 volts Infantil Som Luz e Música 30 Kilos" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Mini Quadriciclo Elétrico 6 volts Infantil Som Luz e Música 30 Kilos</h2>
+          <h2 class="oferta__nome" title="Mini Quadriciclo Elétrico 6 volts Infantil Som Luz e Música 30 Kilos">Mini Quadriciclo Elétrico 6 volts Infantil Som Luz e Música 30 Kilos</h2>
           
           <p class="oferta__data">Divulgado em 28/09/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/mini-quadriciclo-eletrico-6-volts-infantil-som-luz-e-musica-30-kilos-brinq-kids/p/dbefg69hhh/br/bmel/" target="_blank" rel="noopener">
@@ -938,22 +948,10 @@
       <li class="oferta">
         <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/robo-aspirador-de-po-velds-3-em-1-varre-aspira-e-passa-pano-com-mapeamento-via-app-sensor-antiqueda-e-limpeza-multisuperficie-bivolt/velds/400700001/f47181879f77ad57eca325cd1e98f156.jpeg" alt="Robô Aspirador de Pó Velds 3 em 1  Varre Aspira e Passa Pano com Mapeamento via App, Sensor Antiqueda e Limpeza Multisuperfície, Bivolt" loading="lazy" decoding="async" width="600" height="600"></div>
         <div class="oferta__corpo">
-          <h2 class="oferta__nome">Robô Aspirador de Pó Velds 3 em 1  Varre Aspira e Passa Pano com Mapeamento via App, Sensor Antiqueda e Limpeza Multisuperfície, Bivolt</h2>
+          <h2 class="oferta__nome" title="Robô Aspirador de Pó Velds 3 em 1  Varre Aspira e Passa Pano com Mapeamento via App, Sensor Antiqueda e Limpeza Multisuperfície, Bivolt">Robô Aspirador de Pó Velds 3 em 1  Varre Aspira e Passa Pano com Mapeamento via App, Sensor Antiqueda e Limpeza Multisuperfície, Bivolt</h2>
           
           <p class="oferta__data">Divulgado em 27/09/2026</p>
           <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/robo-aspirador-de-po-velds-3-em-1-varre-aspira-e-passa-pano-com-mapeamento-via-app-sensor-antiqueda-e-limpeza-multisuperficie-bivolt/p/bcc09bhek4/ep/eprb/" target="_blank" rel="noopener">
-            Ver preço na loja
-            <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
-          </a>
-        </div>
-      </li>
-      <li class="oferta">
-        <div class="oferta__foto"><img src="https://a-static.mlcdn.com.br/1080x1080/fone-de-ouvido-sem-fio-tws-philips-tat1209bk00-na-cor-preto-bluetooth-microfone-ipx4-e-18h/head/4895229115958/feab8b15f00f8c4fbd07c3f58bef3642.jpg" alt="Fone de ouvido sem fio TWS Philips TAT1209BK00 na cor preto, bluetooth, microfone, IPX4 e 18h" loading="lazy" decoding="async" width="600" height="600"></div>
-        <div class="oferta__corpo">
-          <h2 class="oferta__nome">Fone de ouvido sem fio TWS Philips TAT1209BK00 na cor preto, bluetooth, microfone, IPX4 e 18h</h2>
-          
-          <p class="oferta__data">Divulgado em 26/09/2026</p>
-          <a class="oferta__botao" href="https://www.magazinevoce.com.br/magazinesaquatem/fone-de-ouvido-sem-fio-tws-philips-tat1209bk00-na-cor-preto-bluetooth-microfone-ipx4-e-18h/p/gj9g0fg1g2/ea/fobt/?seller_id=head" target="_blank" rel="noopener">
             Ver preço na loja
             <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
           </a>
@@ -1054,7 +1052,7 @@
 })();
 </script>
 
-<!-- gerado em 25/11/2026 19:54 por automacao\gerar-ofertas.ps1
+<!-- gerado em 26/11/2026 11:35 por automacao\gerar-ofertas.ps1
      O rodapé acima foi EXTRAÍDO do index.html, não copiado: mexeu lá, muda aqui. -->
 </body>
 </html>
